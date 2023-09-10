@@ -8,4 +8,4 @@ def home():
 
 @views.route('/shopping-cart')
 def shopping_cart():
-    return render_template("base.html")
+    return render_template("cart.html")

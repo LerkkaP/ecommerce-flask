@@ -41,3 +41,11 @@ nav input {
 .nav-item a:hover {
   text-decoration: underline;
 }
+
+/*  forms  */
+.login-form input,
+.sign-up-form input {
+  display: flex;
+  border-radius: 20px;
+  border: solid 1.5px black;
+}
