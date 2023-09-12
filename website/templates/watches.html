@@ -5,11 +5,17 @@
   <div class="watch-card">
     <div class="watch-image">
       {% if watch.brand == 'Rolex' %}
-      <img src="{{url_for('static', filename='static/images/datejust.png')}}" />
+      <a href="{{ url_for('view.watch_detail', id=watch.id) }}">
+        <img
+          src="{{url_for('static', filename='static/images/datejust.png')}}"
+        />
+      </a>
       {% else %}
-      <img
-        src="{{url_for('static', filename='static/images/submariner.png')}}"
-      />
+      <a href="{{ url_for('view.watch_detail', id=watch.id) }}">
+        <img
+          src="{{url_for('static', filename='static/images/submariner.png')}}"
+        />
+      </a>
       {% endif %}
     </div>
     <div class="watch-info">
