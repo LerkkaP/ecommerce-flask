@@ -59,3 +59,23 @@ nav input {
 .success {
   color: green;
 }
+
+/* watches layout */
+
+.watches {
+  margin-top: 100px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.watch-card {
+  padding: 2%;
+  flex-grow: 1;
+  flex-basis: 33%;
+
+  text-align: center;
+}
+
+.watch-image img {
+  max-width: 100%;
+}

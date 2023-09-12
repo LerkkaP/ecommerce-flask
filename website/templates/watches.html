@@ -1,0 +1,21 @@
+{% extends "base.html" %} {% block title %} Home {% endblock %} {% block content
+%}
+<div class="watches">
+  {% for watch in watches %}
+  <div class="watch-card">
+    <div class="watch-image">
+      {% if watch.brand == 'Rolex' %}
+      <img src="{{url_for('static', filename='static/images/datejust.png')}}" />
+      {% else %}
+      <img
+        src="{{url_for('static', filename='static/images/submariner.png')}}"
+      />
+      {% endif %}
+    </div>
+    <div class="watch-info">
+      <p>{{ watch.brand }} {{ watch.model }} {{ watch.price }} €</p>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}
