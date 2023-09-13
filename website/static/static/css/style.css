@@ -2,6 +2,7 @@
 
 * {
   box-sizing: border-box;
+  line-height: 1.5;
 }
 
 body {
@@ -78,4 +79,24 @@ nav input {
 
 .watch-image img {
   max-width: 100%;
+  transition: transform 0.5s ease;
+}
+
+.watch-image:hover img {
+  transform: scale(1.2);
+}
+
+.watch-info {
+  margin-top: 35px;
+}
+
+/* watch details */
+
+.details {
+  text-align: center;
+}
+
+.details img {
+  max-width: 100%;
+  height: auto;
 }

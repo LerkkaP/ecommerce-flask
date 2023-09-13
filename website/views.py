@@ -17,13 +17,14 @@ def shopping_cart():
 @views.route('/watch/<int:id>')
 def watch_detail(id):
     watch_id = id
-    query = db.session.execute(text("SELECT brand, model, price FROM watches WHERE id=:watch_id;"), {'watch_id': watch_id})
+    query = db.session.execute(text("SELECT brand, model, price, description FROM watches WHERE id=:watch_id;"), {'watch_id': watch_id})
     details = query.fetchone()
 
     details_dict = {
         'brand': details[0],
         'model': details[1],
-        'price': details[2]
+        'price': details[2],
+        'description': details[3]
     }
 
     print(details_dict)

@@ -1,5 +1,13 @@
 {% extends "base.html" %} {% block content %}
 
-<h2>{{ details.brand }} {{ details.model }} {{ details.price }}</h2>
+<div class="details">
+  <h2>{{ details.brand }} {{ details.model }} {{ details.price }}</h2>
+  <img src="{{url_for('static', filename='static/images/datejust.png')}}" />
+  {% if details.description %}
+  <p>{{ details.description }}</p>
+  {% else %}
+  <p>There is no description of this watch.</p>
+  {% endif %}
+</div>
 
 {% endblock %}
