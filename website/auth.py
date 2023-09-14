@@ -1,19 +1,35 @@
-from flask import Blueprint, render_template, request, flash, redirect
+from flask import Blueprint, render_template, request, flash, redirect, session
 import re
 from sqlalchemy.sql import text
 from werkzeug.security import check_password_hash, generate_password_hash
 from . import db
 
-
 auth = Blueprint('auth', __name__)
 
 @auth.route('/login', methods = ['GET', 'POST'])
 def login():
-    return render_template('login.html')
+    if request.method == "GET":
+        return render_template("login.html")
+    if request.method == 'POST':
+        username = request.form.get("username")
+        password = request.form.get("password")
+        query = ("SELECT id, password FROM users WHERE username=:username;")
+        result = db.session.execute(text(query), {'username': username})
+        user = result.fetchone()
+        if not user:
+            print("Invalid username")
+        else:
+            if check_password_hash(user.password, password):
+                session["user_id"] = user.id
+                flash(f"Welcome {username}!", category="success")
+                return redirect('/')
+            else:
+                print("invalid password")
 
 @auth.route('/logout')
 def logout():
-    return render_template('base.html')
+    del session['user_id']
+    return redirect('/')
 
 @auth.route('/sign-up', methods = ['GET', 'POST'])
 def sign_up():

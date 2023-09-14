@@ -11,7 +11,8 @@ db = SQLAlchemy()
 def create_app():
     app = Flask(__name__)
     app.config['SECRET_KEY'] = 'dev'
-    app.config["SQLALCHEMY_DATABASE_URI"] =  "postgresql:///postgres"
+    app.config["SQLALCHEMY_DATABASE_URI"] =  getenv("DATABASE_URL")
+    app.secret_key = getenv("SECRET_KEY")
     db.init_app(app)
 
     from .views import views

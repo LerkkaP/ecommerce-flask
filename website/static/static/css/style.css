@@ -100,3 +100,34 @@ nav input {
   max-width: 100%;
   height: auto;
 }
+
+/* pagination */
+
+.pagination {
+  text-align: center;
+  margin-bottom: 100px;
+}
+
+.pagination span {
+  border-radius: 50%;
+  width: 34px;
+  height: 34px;
+  line-height: 34px;
+  background-color: black;
+  color: white;
+  border: 1px solid #000;
+  text-align: center;
+  display: inline-block;
+}
+
+.pagination a {
+  border-radius: 50%;
+  width: 34px;
+  height: 34px;
+  line-height: 34px;
+  color: black;
+  border: 1px solid #000;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
