@@ -39,5 +39,20 @@ def watch_detail(id):
         'description': details[3]
     }
 
-    print(details_dict)
-    return render_template("watch_detail.html", details=details_dict)
+    review_query = db.session.execute(text("SELECT * FROM reviews WHERE watch_id=:watch_id;"), {'watch_id': watch_id})
+    reviews = review_query.fetchall()
+    
+
+    reviews_list = []
+    for review in reviews:
+        reviews_dict = {
+            'watch_id': review[1],
+            'user_id': review[2],
+            'review': review[3],
+            'rating': review[4],
+            'review_date': review[5]
+        }
+        reviews_list.append(reviews_dict)
+
+    return render_template("watch_detail.html", details=details_dict, reviews=reviews_list)
+

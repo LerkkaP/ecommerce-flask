@@ -7,6 +7,47 @@
   <p>{{ details.description }}</p>
   {% else %}
   <p>There is no description of this watch.</p>
+  {% endif %} {% if reviews %} {% for review in reviews %}
+  <table>
+    <tr>
+      <th>User</th>
+      <th>Rating</th>
+      <th>Description</th>
+      <th>Date</th>
+    </tr>
+    <tr>
+      <td>Username</td>
+      <td>{{review.review}}</td>
+      <td>{{review.rating}}</td>
+      <td>{{review.review_date}}</td>
+    </tr>
+  </table>
+  {% if session.user_id %}
+  <div>
+    <form method="POST">
+      <div>
+        <div>
+          <label>Rating</label>
+          <select>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+          </select>
+        </div>
+
+        <div>
+          <label>Description</label>
+          <textarea></textarea>
+        </div>
+
+        <div><button type="submit">submit</button></div>
+      </div>
+    </form>
+  </div>
+  {% endif %} {% endfor %} {% else %}
+  <p>This watch doesn't have any reviews.</p>
   {% endif %}
 </div>
 

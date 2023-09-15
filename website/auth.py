@@ -65,4 +65,6 @@ def sign_up():
     '''
 
 
+    # Don't let create name that is already in database
+
     return render_template('sign_up.html')
