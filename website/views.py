@@ -1,6 +1,8 @@
-from flask import Blueprint, render_template, request
+from flask import Blueprint, render_template, request, redirect, session, flash, url_for
+
 from sqlalchemy.sql import text
 from . import db
+from datetime import date
 
 views = Blueprint('view', __name__)
 
@@ -26,33 +28,52 @@ def watches():
 def shopping_cart():
     return render_template("cart.html")
 
-@views.route('/watch/<int:id>')
+@views.route('/watch/<int:id>', methods = ['GET', 'POST'])
 def watch_detail(id):
-    watch_id = id
-    query = db.session.execute(text("SELECT brand, model, price, description FROM watches WHERE id=:watch_id;"), {'watch_id': watch_id})
-    details = query.fetchone()
+    if request.method == "GET":
+        watch_id = id
+        query = db.session.execute(text("SELECT brand, model, price, description FROM watches WHERE id=:watch_id;"), {'watch_id': watch_id})
+        details = query.fetchone()
 
-    details_dict = {
-        'brand': details[0],
-        'model': details[1],
-        'price': details[2],
-        'description': details[3]
-    }
-
-    review_query = db.session.execute(text("SELECT * FROM reviews WHERE watch_id=:watch_id;"), {'watch_id': watch_id})
-    reviews = review_query.fetchall()
-    
-
-    reviews_list = []
-    for review in reviews:
-        reviews_dict = {
-            'watch_id': review[1],
-            'user_id': review[2],
-            'review': review[3],
-            'rating': review[4],
-            'review_date': review[5]
+        details_dict = {
+            'brand': details[0],
+            'model': details[1],
+            'price': details[2],
+            'description': details[3]
         }
-        reviews_list.append(reviews_dict)
 
-    return render_template("watch_detail.html", details=details_dict, reviews=reviews_list)
+        review_query = db.session.execute(text("SELECT * FROM reviews WHERE watch_id=:watch_id;"), {'watch_id': watch_id})
+        reviews = review_query.fetchall()
+        
+
+        reviews_list = []
+        for review in reviews:
+            reviews_dict = {
+                'watch_id': review[1],
+                'user_id': review[2],
+                'review': review[3],
+                'rating': review[4],
+                'review_date': review[5]
+            }
+            reviews_list.append(reviews_dict)
+        
+        return render_template("watch_detail.html", details=details_dict, reviews=reviews_list)
+
+
+    if request.method == "POST":
+        rating = request.form.get("ratings")
+        description = request.form.get("description")
+        today = date.today()
+        user_id = session.get("user_id")
+
+        query = ("INSERT INTO reviews (watch_id, user_id, review, rating, review_date) values (:watch_id, :user_id, :review, :rating, :review_date);")
+        db.session.execute(text(query), {"watch_id": id, "user_id": user_id, "review": description, "rating": rating, "review_date": today})
+        db.session.commit()
+        flash("Review added!")
+
+        return redirect(url_for('view.watch_detail', id=id))
+
+
+        
+
 

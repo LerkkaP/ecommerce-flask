@@ -16,19 +16,9 @@
       messages %}
       <div class="flashes">
         {% for category, message in messages %} {% if category == 'error' %}
-        <div class="error">
-          {{message}}
-          <button onclick="delete_flash(this)">
-            <span>&times;</span>
-          </button>
-        </div>
+        <div class="error">{{message}}</div>
         {% else %}
-        <div class="success">
-          {{message}}
-          <button onclick="delete_flash(this)">
-            <span>&times;</span>
-          </button>
-        </div>
+        <div class="success">{{message}}</div>
       </div>
       {% endif %} {% endfor %} {% endif %} {% endwith %}
       <nav class="navbar">
@@ -75,9 +65,17 @@
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script>
-      delete_flash = (flash) => {
-        $(flash).parent().remove();
-      };
+      document.addEventListener("DOMContentLoaded", function () {
+        const flashes = document.querySelectorAll(
+          ".flashes .error, .flashes .success"
+        );
+
+        flashes.forEach(function (flash) {
+          setTimeout(function () {
+            flash.style.display = "none";
+          }, 5000);
+        });
+      });
     </script>
   </body>
 </html>

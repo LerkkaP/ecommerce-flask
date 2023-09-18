@@ -11,8 +11,8 @@
   <table>
     <tr>
       <th>User</th>
-      <th>Rating</th>
       <th>Description</th>
+      <th>Rating</th>
       <th>Date</th>
     </tr>
     <tr>
@@ -22,13 +22,15 @@
       <td>{{review.review_date}}</td>
     </tr>
   </table>
-  {% if session.user_id %}
+  {% endfor %} {% else %}
+  <p>This watch doesn't have any reviews.</p>
+  {% endif %} {% if session.user_id %}
   <div>
     <form method="POST">
       <div>
         <div>
-          <label>Rating</label>
-          <select>
+          <label for="ratings">Rating</label>
+          <select name="ratings" id="ratings">
             <option>1</option>
             <option>2</option>
             <option>3</option>
@@ -38,16 +40,14 @@
         </div>
 
         <div>
-          <label>Description</label>
-          <textarea></textarea>
+          <label for="description">Description</label>
+          <textarea name="description" id="description"></textarea>
         </div>
 
         <div><button type="submit">submit</button></div>
       </div>
     </form>
   </div>
-  {% endif %} {% endfor %} {% else %}
-  <p>This watch doesn't have any reviews.</p>
   {% endif %}
 </div>
 

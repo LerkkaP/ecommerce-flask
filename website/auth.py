@@ -17,14 +17,17 @@ def login():
         result = db.session.execute(text(query), {'username': username})
         user = result.fetchone()
         if not user:
-            print("Invalid username")
+            flash("Invalid username", category="error")
+            return redirect('/login') 
         else:
             if check_password_hash(user.password, password):
                 session["user_id"] = user.id
                 flash(f"Welcome {username}!", category="success")
                 return redirect('/')
             else:
-                print("invalid password")
+                flash("Invalid password", category="error")
+                return redirect('/login') 
+
 
 @auth.route('/logout')
 def logout():
