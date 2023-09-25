@@ -24,10 +24,6 @@ def watches():
     return render_template("watches.html", watches=watches, page=page,     items_per_page = items_per_page, total_pages=total_pages
 )
 
-@views.route('/shopping-cart')
-def shopping_cart():
-    return render_template("cart.html")
-
 @views.route('/watch/<int:id>', methods = ['GET', 'POST'])
 def watch_detail(id):
     if request.method == "GET":
@@ -39,7 +35,8 @@ def watch_detail(id):
             'brand': details[0],
             'model': details[1],
             'price': details[2],
-            'description': details[3]
+            'description': details[3],
+            'watch_id': id
         }
 
         review_query = db.session.execute(text("SELECT * FROM reviews WHERE watch_id=:watch_id;"), {'watch_id': watch_id})

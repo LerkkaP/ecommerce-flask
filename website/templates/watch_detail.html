@@ -3,26 +3,37 @@
 <div class="details">
   <h2>{{ details.brand }} {{ details.model }} {{ details.price }}</h2>
   <img src="{{url_for('static', filename='static/images/datejust.png')}}" />
-  {% if details.description %}
+  {% if session.user_id %}
+  <div>
+    <form action="{{url_for('carts.add_cart')}}" method="POST">
+      <input type="hidden" name="watch_id" value="{{ details.watch_id }}" />
+      <button>add to cart</button>
+      <label for="quantity">Quantity:</label>
+      <input type="number" name="quantity" value="1" min="1" />
+    </form>
+  </div>
+  {% endif %} {% if details.description %}
   <p>{{ details.description }}</p>
   {% else %}
   <p>There is no description of this watch.</p>
-  {% endif %} {% if reviews %} {% for review in reviews %}
-  <table>
-    <tr>
-      <th>User</th>
-      <th>Description</th>
-      <th>Rating</th>
-      <th>Date</th>
-    </tr>
-    <tr>
-      <td>Username</td>
-      <td>{{review.review}}</td>
-      <td>{{review.rating}}</td>
-      <td>{{review.review_date}}</td>
-    </tr>
-  </table>
-  {% endfor %} {% else %}
+  {% endif %} {% if reviews %}
+  <h2>Reviews</h2>
+  {% for review in reviews %}
+  <div>
+    <span>Username</span>
+    {% if review.rating == 1 %}
+    <span>&#11088;</span>
+    {{ review.review }} {% elif review.rating == 2 %}
+    <span>&#11088;&#11088;</span>
+    {% elif review.rating == 3 %}
+    <span>&#11088;&#11088;&#11088;</span>
+    {% elif review.rating == 4 %}
+    <span>&#11088;&#11088;&#11088;&#11088;</span>
+    {% elif review.rating == 5 %}
+    <span>&#11088;&#11088;&#11088;&#11088;&#11088;</span>
+    {% endif %} {% endfor %}
+  </div>
+  {% else %}
   <p>This watch doesn't have any reviews.</p>
   {% endif %} {% if session.user_id %}
   <div>
@@ -38,7 +49,6 @@
             <option>5</option>
           </select>
         </div>
-
         <div>
           <label for="description">Description</label>
           <textarea name="description" id="description"></textarea>
