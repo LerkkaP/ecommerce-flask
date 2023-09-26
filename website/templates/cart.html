@@ -1,25 +1,33 @@
 {% extends "base.html" %} {% block title %}Cart{% endblock %} {% block content
-%}
-
+%} {% if items|length != 0 %}
 <h1>Shopping cart</h1>
 <table class="table">
   <thead>
     <tr>
-      <th scope="col">Brand</th>
-      <th scope="col">Model</th>
-      <th scope="col">Price</th>
+      <th>Quantity</th>
+      <th>Brand</th>
+      <th>Model</th>
+      <th>Price</th>
     </tr>
   </thead>
   <tbody>
     {% for item in items %}
     <tr>
+      <td>{{ item[1] }}</td>
       <td>{{ item[2] }}</td>
       <td>{{ item[3] }}</td>
       <td>{{ item[4] }} €</td>
-      <td><button>remove</button></td>
+      <td>
+        <form action="{{url_for('carts.delete_item')}}" method="POST">
+          <input type="hidden" name="watch_id" value="{{ item[0] }}" />
+          <input type="hidden" name="quantity" value="{{ item[1] }}" />
+          <button>remove</button>
+        </form>
+      </td>
     </tr>
     {% endfor %}
   </tbody>
 </table>
-<br />
-{% endblock %}
+{% else %}
+<h2>Shopping cart is empty.</h2>
+> {% endif %} {% endblock %}
