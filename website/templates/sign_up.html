@@ -1,9 +1,9 @@
 {% extends "base.html" %} {% block title %}Signup{% endblock %} {% block content
 %}
 
-<h2>Signup</h2>
-<div class="sign-up-form">
+<div class="form">
   <form method="POST">
+    <h2>Sign in</h2>
     <div>
       <div>
         <label for="username">Username</label>
@@ -22,6 +22,7 @@
 
       <div><button type="submit">Register</button></div>
     </div>
+    <span>Already have an account? <a href="/login">Sign in</a></span>
   </form>
 </div>
 
