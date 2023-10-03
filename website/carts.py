@@ -36,8 +36,14 @@ def shopping_cart():
         "WHERE c.user_id=:user_id;"),
         {"user_id": user_id})
     items = query.fetchall()
-    
-    return render_template("cart.html", items=items)
+    print(items)
+
+    summa = 0
+    if len(items) > 0:
+        for item in items:
+            summa += item[4] * item[1]
+
+    return render_template("cart.html", items=items, summa=summa)
 
 @carts.route('/deleteitem', methods=['POST'])
 def delete_item():

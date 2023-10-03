@@ -25,13 +25,13 @@
         <ul class="nav-links">
           {% if session.user_id %}
           <li class="nav-item">
-            <a href="/">Home</a>
+            <a href="/">Watches</a>
           </li>
           <li class="nav-item">
-            <input />
-          </li>
-          <li class="nav-item">
-            <a href="/logout">logout</a>
+            <img
+              src="{{url_for('static', filename='static/images/profile.svg')}}"
+            />
+            <a href="/profile">Profile</a>
           </li>
           <li class="nav-item">
             <img
@@ -39,18 +39,15 @@
             />
             <a href="/shopping-cart">Shopping cart</a>
           </li>
+          <li class="nav-item">
+            <a id="logout" href="/logout">Logout</a>
+          </li>
           {% else %}
           <li class="nav-item">
-            <a href="/">Home</a>
+            <a href="/">Watches</a>
           </li>
           <li class="nav-item">
-            <input />
-          </li>
-          <li class="nav-item">
-            <a href="/login">Login</a>
-          </li>
-          <li class="nav-item">
-            <a href="/sign-up">Sign-up</a>
+            <a id="signin" href="/login">Sign in</a>
           </li>
           {% endif %}
         </ul>

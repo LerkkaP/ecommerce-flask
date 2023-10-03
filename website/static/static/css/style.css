@@ -10,34 +10,39 @@
 /* navbar */
 
 body {
-  color: #ffffff;
-  opacity: 0.87;
-  background-color: #121212;
-}
-
-nav {
-  padding: 10px 0;
-}
-
-nav input {
-  background-color: #5a5a5a;
-  color: white;
-  padding: 10px;
-  border-radius: 20px;
-  height: 70%;
-  box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
+  color: black;
 }
 
 .nav-links {
   list-style: none;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: right;
+  margin-right: 20px;
+}
+
+#signin,
+#logout {
+  background-color: rgb(46, 157, 209);
+  color: white;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-radius: 4px;
+}
+
+.nav-item {
+  padding-left: 60px;
 }
 
 .nav-item a {
   text-decoration: none;
-  color: white;
+  color: black;
+}
+
+.nav-item a:visited {
+  color: black;
 }
 
 .nav-item a:hover {
@@ -149,8 +154,9 @@ form {
   width: 34px;
   height: 34px;
   line-height: 34px;
-  background-color: white;
-  color: black;
+  background-color: black;
+  color: white;
+  border: 1px solid #000;
   text-align: center;
   display: inline-block;
 }
@@ -160,8 +166,8 @@ form {
   width: 34px;
   height: 34px;
   line-height: 34px;
-  color: white;
-  border: 1px solid white;
+  color: black;
+  border: 1px solid #000;
   text-align: center;
   text-decoration: none;
   display: inline-block;
