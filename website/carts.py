@@ -16,7 +16,7 @@ def add_cart():
         count_result = count.fetchone()[0]
         if count_result == 0:
             query = ("INSERT INTO cart (watch_id, user_id, quantity) values (:watch_id, :user_id, :quantity);")
-            db.session.execute(text(query), {"watch_id": watch_id, "user_id": user_id, "quantity": quantity})
+            db.session.execute(text(query), {"watch_id": watch_id, "user_id": user_id, "quantity": quantity })
             db.session.commit()
             flash("Watch added to cart!")
 
