@@ -21,8 +21,7 @@ def watches():
     result = db.session.execute(text("SELECT id, brand, model, price FROM watches LIMIT :limit OFFSET :offset;"), {'limit': items_per_page, 'offset': offset})
 
     watches = result.fetchall()
-    return render_template("watches.html", watches=watches, page=page,     items_per_page = items_per_page, total_pages=total_pages
-)
+    return render_template("watches.html", watches=watches, page=page, items_per_page = items_per_page, total_pages=total_pages)
 
 @views.route('/watch/<int:id>', methods = ['GET', 'POST'])
 def watch_detail(id):

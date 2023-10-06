@@ -36,7 +36,6 @@ def shopping_cart():
         "WHERE c.user_id=:user_id;"),
         {"user_id": user_id})
     items = query.fetchall()
-    print(items)
 
     summa = 0
     if len(items) > 0:
