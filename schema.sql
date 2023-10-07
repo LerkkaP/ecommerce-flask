@@ -16,7 +16,7 @@ CREATE TABLE users (
 CREATE TABLE reviews (
     id SERIAL PRIMARY KEY,
     watch_id INTEGER REFERENCES watches,
-    user_id INTEGER REFERENCES users,
+    user_id INTEGER REFERENCES users ON DELETE CASCADE,
     review TEXT,
     rating INTEGER,
     review_date DATE
@@ -25,13 +25,13 @@ CREATE TABLE reviews (
 CREATE TABLE cart (
     id SERIAL PRIMARY KEY,
     watch_id INTEGER REFERENCES watches,
-    user_id INTEGER REFERENCES users,
+    user_id INTEGER REFERENCES users ON DELETE CASCADE,
     quantity INTEGER
 );
 
 CREATE TABLE orders (
     id SERIAL PRIMARY KEY, 
-    user_id INTEGER REFERENCES users, 
+    user_id INTEGER REFERENCES users ON DELETE CASCADE, 
     watch_id INTEGER REFERENCES watches,
     first_name TEXT,
     last_name TEXT,
@@ -42,4 +42,4 @@ CREATE TABLE orders (
     quantity INTEGER,
     payment_method TEXT,
     order_date DATE
-;)
+);
