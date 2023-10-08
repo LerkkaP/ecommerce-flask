@@ -1,3 +1,37 @@
 {% extends 'admin/master.html' %} {% block body %}
-<p>Orders</p>
+<div class="container mt-4">
+  <h2 class="text-center">Orders</h2>
+  <table class="table table-striped text-center">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Watch id</th>
+        <th scope="col">First name</th>
+        <th scope="col">Last name</th>
+        <th scope="col">Shipping address</th>
+        <th scope="col">Billing address</th>
+        <th scope="col">Phone number</th>
+        <th scope="col">Email</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Payment method</th>
+        <th scope="col">Order date</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for order in orders %}
+      <tr>
+        <td>{{ order['watch_id'] }}</td>
+        <td>{{ order['first_name'] }}</td>
+        <td>{{ order['last_name'] }}</td>
+        <td>{{ order['shipping_address'] }}</td>
+        <td>{{ order['billing_address'] }}</td>
+        <td>{{ order['phone_number'] }}</td>
+        <td>{{ order['email'] }}</td>
+        <td>{{ order['quantity'] }}</td>
+        <td>{{ order['payment_method'] }}</td>
+        <td>{{ order['order_date'] }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
 {% endblock %}

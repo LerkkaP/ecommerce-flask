@@ -1,3 +1,23 @@
 {% extends 'admin/master.html' %} {% block body %}
-<p>Users</p>
+<div class="container mt-4">
+  <h2 class="text-center">User</h2>
+  <table class="table table-striped">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col" class="text-center">Username</th>
+        <th scope="col" class="text-center">Privileges</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for user in users %}
+      <tr>
+        <th scope="row">{{ loop.index0 + 1 }}</th>
+        <td class="text-center">{{ user['username'] }}</td>
+        <td class="text-center">{{ user['privileges'] }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
 {% endblock %}
