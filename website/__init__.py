@@ -26,6 +26,7 @@ def create_app():
 
     from .admin_views.orders import Orders
     from .admin_views.users import Users
+    from .admin_views.watches import Watches
 
     app.register_blueprint(views, url_prefix='/')
     app.register_blueprint(auth, url_prefix='/')
@@ -33,7 +34,6 @@ def create_app():
     app.register_blueprint(profile, url_prefix='/')
     app.register_blueprint(checkout, url_prefix='/')
 
-    
     @app.before_request
     def check_admin_access():
         if request.path.startswith('/admin'):
@@ -51,6 +51,8 @@ def create_app():
     admin = Admin(app, name='ecommerceFlask', template_mode='bootstrap3')
     admin.add_view(Orders(name='Orders', endpoint='orders'))
     admin.add_view(Users(name='Users', endpoint='users'))
+    admin.add_view(Watches(name='Watches', endpoint='watches'))
+
 
 
     return app

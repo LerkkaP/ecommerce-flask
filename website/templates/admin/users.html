@@ -1,12 +1,13 @@
 {% extends 'admin/master.html' %} {% block body %}
 <div class="container mt-4">
-  <h2 class="text-center">User</h2>
+  <h2 class="text-center">Users</h2>
   <table class="table table-striped">
     <thead class="thead-dark">
       <tr>
         <th scope="col">#</th>
         <th scope="col" class="text-center">Username</th>
         <th scope="col" class="text-center">Privileges</th>
+        <th scope="col" class="text-center">Remove</th>
       </tr>
     </thead>
     <tbody>
@@ -15,6 +16,16 @@
         <th scope="row">{{ loop.index0 + 1 }}</th>
         <td class="text-center">{{ user['username'] }}</td>
         <td class="text-center">{{ user['privileges'] }}</td>
+        <td class="text-center">
+          <form
+            method="POST"
+            action="{{ url_for('users.delete_user', user_id=user['id']) }}"
+          >
+            <button class="btn btn-danger btn-secondary btn-sm">
+              Delete user
+            </button>
+          </form>
+        </td>
       </tr>
       {% endfor %}
     </tbody>

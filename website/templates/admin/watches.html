@@ -1,0 +1,29 @@
+{% extends 'admin/master.html' %} {% block body %}
+<div class="container mt-4">
+  <h2 class="text-center">Watches</h2>
+  <table class="table table-striped text-center">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col" class="text-center">#</th>
+        <th scope="col" class="text-center">Watch id</th>
+        <th scope="col" class="text-center">Brand</th>
+        <th scope="col" class="text-center">Model</th>
+        <th scope="col" class="text-center">Price</th>
+        <th scope="col" class="text-center">Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for watch in watches %}
+      <tr>
+        <th scope="row">{{ loop.index0 + 1 }}</th>
+        <td>{{watch['id']}}</td>
+        <td>{{watch['brand']}}</td>
+        <td>{{watch['model']}}</td>
+        <td>{{watch['price']}} €</td>
+        <td>{{watch['description']}}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

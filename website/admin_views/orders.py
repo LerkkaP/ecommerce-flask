@@ -27,3 +27,4 @@ class Orders(BaseView):
             orders_list.append(orders_dict)
 
         return self.render('admin/orders.html', orders=orders_list)
+    
