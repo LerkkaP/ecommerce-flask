@@ -2,7 +2,10 @@
 
 <div class="details">
   <h2>{{ details.brand }} {{ details.model }} {{ details.price }}</h2>
-  <img src="{{url_for('static', filename='static/images/datejust.png')}}" />
+  <img
+    src="{{url_for('static', filename='static/images/watches/' ~ details.
+  brand ~ '_' ~ details.model ~ '.png')}}"
+  />
   {% if session.user_id %}
   <div>
     <form action="{{url_for('carts.add_cart')}}" method="POST">

@@ -18,7 +18,7 @@ def watches():
 
     total_pages = (total_items + items_per_page - 1) // items_per_page
 
-    result = db.session.execute(text("SELECT id, brand, model, price FROM watches LIMIT :limit OFFSET :offset;"), {'limit': items_per_page, 'offset': offset})
+    result = db.session.execute(text("SELECT id, brand, model, price FROM watches ORDER BY brand LIMIT :limit OFFSET :offset;"), {'limit': items_per_page, 'offset': offset})
 
     watches = result.fetchall()
     return render_template("watches.html", watches=watches, page=page, items_per_page = items_per_page, total_pages=total_pages)

@@ -6,7 +6,8 @@
     <div class="watch-image">
       <a href="{{ url_for('view.watch_detail', id=watch.id) }}">
         <img
-          src="{{url_for('static', filename='static/images/watches/' ~ watch.brand ~ '_' ~ watch.model ~ '.png')}}"
+          src="{{url_for('static', filename='static/images/watches/' ~ watch.
+          brand ~ '_' ~ watch.model ~ '.png')}}"
         />
       </a>
     </div>
