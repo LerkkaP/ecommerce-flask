@@ -11,7 +11,7 @@
     <title>{% block title %}{% endblock %}</title>
   </head>
   <body>
-    <div>
+    <div class="main-content">
       {% with messages = get_flashed_messages(with_categories=true) %} {% if
       messages %}
       <div class="flashes">
@@ -53,6 +53,40 @@
         </ul>
       </nav>
       {% block content %} {% endblock %}
+    </div>
+    <div class="footer-brand-logos">
+      <img
+        src="{{url_for('static', filename='static/images/brands/Rolex.png')}}"
+        alt="Rolex"
+      />
+
+      <img
+        src="{{url_for('static', filename='static/images/brands/Omega.png')}}"
+        alt="Omega"
+      />
+
+      <img
+        src="{{url_for('static', filename='static/images/brands/Hublot.png')}}"
+        alt="Hublot"
+      />
+
+      <img
+        src="{{url_for('static', filename='static/images/brands/Tudor.png')}}"
+        alt="Tudor"
+      />
+
+      <img
+        src="{{url_for('static', filename='static/images/brands/Patek.png')}}"
+        alt="Patek"
+      />
+
+      <img
+        src="{{url_for('static', filename='static/images/brands/Tag Heuer.png')}}"
+        alt="Tag Heuer"
+      />
+      <div class="copyright">
+        <small>&copy; Copyright 2023, Erik Peteri</small>
+      </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script>
