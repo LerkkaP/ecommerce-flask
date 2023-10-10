@@ -1,32 +1,38 @@
 {% extends "base.html" %} {% block content %}
 
-<div class="details">
-  <h2>{{ details.brand }} {{ details.model }} {{ details.price }}</h2>
-  <img
-    src="{{url_for('static', filename='static/images/watches/' ~ details.
-  brand ~ '_' ~ details.model ~ '.png')}}"
-  />
-  {% if session.user_id %}
-  <div>
+<div class="details-container">
+  <div class="details-image">
+    <img
+      src="{{url_for('static', filename='static/images/watches/' ~ details.brand ~ '_' ~ details.model ~ '.png')}}"
+    />
+  </div>
+
+  <div class="details-info">
+    <h2>{{ details.brand }} {{ details.model }} {{ details.price }} €</h2>
+    {% if details.description %}
+    <p>{{ details.description }}</p>
+    {% else %}
+    <p>There is no description of this watch.</p>
+    {% endif %} {% if session.user_id %}
     <form action="{{url_for('carts.add_cart')}}" method="POST">
       <input type="hidden" name="watch_id" value="{{ details.watch_id }}" />
       <button>add to cart</button>
       <label for="quantity">Quantity:</label>
       <input type="number" name="quantity" value="1" min="1" />
     </form>
+    {% endif %}
   </div>
-  {% endif %} {% if details.description %}
-  <p>{{ details.description }}</p>
-  {% else %}
-  <p>There is no description of this watch.</p>
-  {% endif %} {% if reviews %}
+</div>
+
+<div class="reviews-container">
+  {% if reviews %}
   <h2>Reviews</h2>
   {% for review in reviews %}
   <div>
     <span>Username</span>
     {% if review.rating == 1 %}
     <span>&#11088;</span>
-    {{ review.review }} {% elif review.rating == 2 %}
+    {% elif review.rating == 2 %}
     <span>&#11088;&#11088;</span>
     {% elif review.rating == 3 %}
     <span>&#11088;&#11088;&#11088;</span>
@@ -34,9 +40,9 @@
     <span>&#11088;&#11088;&#11088;&#11088;</span>
     {% elif review.rating == 5 %}
     <span>&#11088;&#11088;&#11088;&#11088;&#11088;</span>
-    {% endif %} {% endfor %}
+    {% endif %} {{ review.review }}
   </div>
-  {% else %}
+  {% endfor %} {% else %}
   <p>This watch doesn't have any reviews.</p>
   {% endif %} {% if session.user_id %}
   <div>
@@ -56,7 +62,6 @@
           <label for="description">Description</label>
           <textarea name="description" id="description"></textarea>
         </div>
-
         <div><button type="submit">submit</button></div>
       </div>
     </form>

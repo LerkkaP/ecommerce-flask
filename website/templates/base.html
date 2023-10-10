@@ -28,19 +28,13 @@
             <a href="/">Watches</a>
           </li>
           <li class="nav-item">
-            <img
-              src="{{url_for('static', filename='static/images/profile.svg')}}"
-            />
             <a href="/profile">Profile</a>
           </li>
           <li class="nav-item">
-            <img
-              src="{{url_for('static', filename='static/images/cart.svg')}}"
-            />
             <a href="/shopping-cart">Shopping cart</a>
           </li>
           <li class="nav-item">
-            <a id="logout" href="/logout">Logout</a>
+            <a id="signout" href="/logout">Sign out</a>
           </li>
           {% else %}
           <li class="nav-item">
