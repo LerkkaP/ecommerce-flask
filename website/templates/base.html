@@ -11,90 +11,92 @@
     <title>{% block title %}{% endblock %}</title>
   </head>
   <body>
-    <div class="main-content">
-      {% with messages = get_flashed_messages(with_categories=true) %} {% if
-      messages %}
-      <div class="flashes">
-        {% for category, message in messages %} {% if category == 'error' %}
-        <div class="error">{{message}}</div>
-        {% else %}
-        <div class="success">{{message}}</div>
-      </div>
-      {% endif %} {% endfor %} {% endif %} {% endwith %}
-      <nav class="navbar">
-        <ul class="nav-links">
-          {% if session.user_id %}
-          <li class="nav-item">
-            <a href="/">Watches</a>
-          </li>
-          <li class="nav-item">
-            <a href="/profile">Profile</a>
-          </li>
-          <li class="nav-item">
-            <a href="/shopping-cart">Shopping cart</a>
-          </li>
-          <li class="nav-item">
-            <a id="signout" href="/logout">Sign out</a>
-          </li>
+    <div id="page-container">
+      <div class="main-content">
+        {% with messages = get_flashed_messages(with_categories=true) %} {% if
+        messages %}
+        <div class="flashes">
+          {% for category, message in messages %} {% if category == 'error' %}
+          <div class="error">{{message}}</div>
           {% else %}
-          <li class="nav-item">
-            <a href="/">Watches</a>
-          </li>
-          <li class="nav-item">
-            <a id="signin" href="/login">Sign in</a>
-          </li>
-          {% endif %}
-        </ul>
-      </nav>
-      {% block content %} {% endblock %}
-    </div>
-    <div class="footer-brand-logos">
-      <img
-        src="{{url_for('static', filename='static/images/brands/Rolex.png')}}"
-        alt="Rolex"
-      />
-
-      <img
-        src="{{url_for('static', filename='static/images/brands/Omega.png')}}"
-        alt="Omega"
-      />
-
-      <img
-        src="{{url_for('static', filename='static/images/brands/Hublot.png')}}"
-        alt="Hublot"
-      />
-
-      <img
-        src="{{url_for('static', filename='static/images/brands/Tudor.png')}}"
-        alt="Tudor"
-      />
-
-      <img
-        src="{{url_for('static', filename='static/images/brands/Patek.png')}}"
-        alt="Patek"
-      />
-
-      <img
-        src="{{url_for('static', filename='static/images/brands/Tag Heuer.png')}}"
-        alt="Tag Heuer"
-      />
-      <div class="copyright">
-        <small>&copy; Copyright 2023, Erik Peteri</small>
+          <div class="success">{{message}}</div>
+        </div>
+        {% endif %} {% endfor %} {% endif %} {% endwith %}
+        <nav class="navbar">
+          <ul class="nav-links">
+            {% if session.user_id %}
+            <li class="nav-item">
+              <a href="/">Watches</a>
+            </li>
+            <li class="nav-item">
+              <a href="/profile">Profile</a>
+            </li>
+            <li class="nav-item">
+              <a href="/shopping-cart">Shopping cart</a>
+            </li>
+            <li class="nav-item">
+              <a id="signout" href="/logout">Sign out</a>
+            </li>
+            {% else %}
+            <li class="nav-item">
+              <a href="/">Watches</a>
+            </li>
+            <li class="nav-item">
+              <a id="signin" href="/login">Sign in</a>
+            </li>
+            {% endif %}
+          </ul>
+        </nav>
+        {% block content %} {% endblock %}
       </div>
-    </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const flashes = document.querySelectorAll(
-          ".flashes .error, .flashes .success"
-        );
+      <div class="footer-brand-logos">
+        <img
+          src="{{url_for('static', filename='static/images/brands/Rolex.png')}}"
+          alt="Rolex"
+        />
 
-        flashes.forEach(function (flash) {
-          setTimeout(function () {
-            flash.style.display = "none";
-          }, 5000);
+        <img
+          src="{{url_for('static', filename='static/images/brands/Omega.png')}}"
+          alt="Omega"
+        />
+
+        <img
+          src="{{url_for('static', filename='static/images/brands/Hublot.png')}}"
+          alt="Hublot"
+        />
+
+        <img
+          src="{{url_for('static', filename='static/images/brands/Tudor.png')}}"
+          alt="Tudor"
+        />
+
+        <img
+          src="{{url_for('static', filename='static/images/brands/Patek.png')}}"
+          alt="Patek"
+        />
+
+        <img
+          src="{{url_for('static', filename='static/images/brands/Tag Heuer.png')}}"
+          alt="Tag Heuer"
+        />
+        <div class="copyright">
+          <small>&copy; Copyright 2023, Erik Peteri</small>
+        </div>
+      </div>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+      <script>
+        document.addEventListener("DOMContentLoaded", function () {
+          const flashes = document.querySelectorAll(
+            ".flashes .error, .flashes .success"
+          );
+
+          flashes.forEach(function (flash) {
+            setTimeout(function () {
+              flash.style.display = "none";
+            }, 5000);
+          });
         });
-      });
-    </script>
+      </script>
+    </div>
   </body>
 </html>

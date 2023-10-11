@@ -17,6 +17,7 @@
     <form action="{{url_for('carts.add_cart')}}" method="POST">
       <input type="hidden" name="watch_id" value="{{ details.watch_id }}" />
       <button>add to cart</button>
+      <br />
       <label for="quantity">Quantity:</label>
       <input type="number" name="quantity" value="1" min="1" />
     </form>
@@ -28,19 +29,23 @@
   {% if reviews %}
   <h2>Reviews</h2>
   {% for review in reviews %}
+  <hr />
   <div>
-    <span>Username</span>
-    {% if review.rating == 1 %}
-    <span>&#11088;</span>
-    {% elif review.rating == 2 %}
-    <span>&#11088;&#11088;</span>
-    {% elif review.rating == 3 %}
-    <span>&#11088;&#11088;&#11088;</span>
-    {% elif review.rating == 4 %}
-    <span>&#11088;&#11088;&#11088;&#11088;</span>
-    {% elif review.rating == 5 %}
-    <span>&#11088;&#11088;&#11088;&#11088;&#11088;</span>
-    {% endif %} {{ review.review }}
+    <div>
+      <span>Username</span>
+      {% if review.rating == 1 %}
+      <span>&#11088;</span>
+      {% elif review.rating == 2 %}
+      <span>&#11088;&#11088;</span>
+      {% elif review.rating == 3 %}
+      <span>&#11088;&#11088;&#11088;</span>
+      {% elif review.rating == 4 %}
+      <span>&#11088;&#11088;&#11088;&#11088;</span>
+      {% elif review.rating == 5 %}
+      <span>&#11088;&#11088;&#11088;&#11088;&#11088;</span>
+    </div>
+    {% endif %}
+    <div class="review-text">{{ review.review }}</div>
   </div>
   {% endfor %} {% else %}
   <p>This watch doesn't have any reviews.</p>
@@ -58,9 +63,14 @@
             <option>5</option>
           </select>
         </div>
-        <div>
-          <label for="description">Description</label>
-          <textarea name="description" id="description"></textarea>
+        <div class="description">
+          <label for="description">Review</label>
+          <textarea
+            placeholder="Write a review..."
+            rows="5"
+            name="description"
+            id="description"
+          ></textarea>
         </div>
         <div><button type="submit">submit</button></div>
       </div>
