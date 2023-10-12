@@ -1,22 +1,22 @@
 {% extends 'admin/master.html' %} {% block body %}
 <div class="container mt-4">
-  <h2 class="text-center">Users</h2>
+  <h2 class="text-left">Users</h2>
   <table class="table table-striped">
     <thead class="thead-dark">
       <tr>
         <th scope="col">#</th>
-        <th scope="col" class="text-center">Username</th>
-        <th scope="col" class="text-center">Privileges</th>
-        <th scope="col" class="text-center">Remove</th>
+        <th scope="col" class="text-left">Username</th>
+        <th scope="col" class="text-left">Privileges</th>
+        <th scope="col" class="text-left">Remove</th>
       </tr>
     </thead>
     <tbody>
       {% for user in users %}
       <tr>
         <th scope="row">{{ loop.index0 + 1 }}</th>
-        <td class="text-center">{{ user['username'] }}</td>
-        <td class="text-center">{{ user['privileges'] }}</td>
-        <td class="text-center">
+        <td class="text-left">{{ user['username'] }}</td>
+        <td class="text-left">{{ user['privileges'] }}</td>
+        <td class="text-left">
           <form
             method="POST"
             action="{{ url_for('users.delete_user', user_id=user['id']) }}"

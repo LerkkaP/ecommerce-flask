@@ -22,7 +22,7 @@ class Users(BaseView):
 
         return self.render('admin/users.html', users=users_list)
     
-    @expose('/delete/<int:user_id>', methods=['POST'])
+    @expose('/delete_user/<int:user_id>', methods=['POST'])
     def delete_user(self, user_id):
         db.session.execute(text("DELETE FROM users WHERE id=:user_id"), {"user_id": user_id})
         db.session.commit()

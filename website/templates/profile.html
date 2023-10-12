@@ -1,6 +1,6 @@
 {% extends "base.html" %} {% block title %} Profile {% endblock %} {% block
 content %}
-<div>
+<div class="profile-page">
   <form
     id="deleteProfile"
     action="{{url_for('profile.delete_profile')}}"
@@ -10,13 +10,12 @@ content %}
       Delete account
     </button>
   </form>
-
-  <script>
-    const deleteConfirm = () => {
-      if (confirm("Are you sure you want to delete your account?") === true) {
-        document.getElementById("deleteProfile").submit();
-      }
-    };
-  </script>
 </div>
+<script>
+  const deleteConfirm = () => {
+    if (confirm("Are you sure you want to delete your account?") === true) {
+      document.getElementById("deleteProfile").submit();
+    }
+  };
+</script>
 {% endblock %}

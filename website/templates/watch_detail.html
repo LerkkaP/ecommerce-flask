@@ -10,7 +10,7 @@
   <div class="details-info">
     <h2>{{ details.brand }} {{ details.model }} {{ details.price }} €</h2>
     {% if details.description %}
-    <p>{{ details.description }}</p>
+    <p class="details-description">{{ details.description }}</p>
     {% else %}
     <p>There is no description of this watch.</p>
     {% endif %} {% if session.user_id %}
@@ -48,13 +48,13 @@
     <div class="review-text">{{ review.review }}</div>
   </div>
   {% endfor %} {% else %}
-  <p>This watch doesn't have any reviews.</p>
+  <p class="no-reviews">This watch doesn't have any reviews.</p>
   {% endif %} {% if session.user_id %}
   <div>
     <form method="POST">
       <div>
         <div>
-          <label for="ratings">Rating</label>
+          <label for="ratings">Give rating</label>
           <select name="ratings" id="ratings">
             <option>1</option>
             <option>2</option>

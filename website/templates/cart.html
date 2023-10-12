@@ -1,45 +1,44 @@
 {% extends "base.html" %} {% block title %}Cart{% endblock %} {% block content
 %} {% if items|length != 0 %}
-<table class="table">
-  <thead>
+<div class="small-container cart-page">
+  <table>
     <tr>
-      <th>Items</th>
+      <th>Item</th>
       <th>Quantity</th>
       <th>Subtotal</th>
-      <th>Remove</th>
     </tr>
-  </thead>
-  <tbody>
     {% for item in items %}
     <tr>
       <td>
-        <a href="{{ url_for('view.watch_detail', id=item[0])}}"
-          >{{item[2]}} {{item[3]}}</a
-        >
-        <br />
-        {{ item[4] }} €
+        <div class="cart-info">
+          <a href="{{ url_for('view.watch_detail', id=item[0]) }}">
+            <img
+              src="{{url_for('static', filename='static/images/watches/' ~ item[2] ~ '_' ~ item[3] ~ '.png')}}"
+            />
+          </a>
+          <div>
+            <p>{{item[2]}} {{item[3]}}</p>
+            <small>Price: {{ item[4] }} €</small>
+            <br />
+            <a>Remove</a>
+          </div>
+        </div>
       </td>
       <td>{{item[1]}}</td>
       <td>{{item[4] * item[1]}} €</td>
-      <td>
-        <form action="{{url_for('carts.delete_item')}}" method="POST">
-          <input type="hidden" name="watch_id" value="{{ item[0] }}" />
-          <input type="hidden" name="quantity" value="{{ item[1] }}" />
-          <button>
-            <img
-              src="{{url_for('static', filename='static/images/trash.svg')}}"
-            />
-          </button>
-        </form>
-      </td>
     </tr>
     {% endfor %}
-  </tbody>
-</table>
-<p>Total: {{summa}} €</p>
-<hr />
-<a id="checkout" href="/checkout">Proceed to checkout</a>
+  </table>
+  <p>Total: <b>{{summa}}</b> €</p>
+  <a id="checkout" href="/checkout">Proceed to checkout</a>
+</div>
 {% else %}
 
-<h2>Your cart is empty</h2>
+<div class="empty-cart">
+  <h2>Your cart is empty!</h2>
+  <img src="{{url_for('static', filename='static/images/cart.png')}}" />
+  <a href="{{ url_for('view.watches')}}">
+    <button>Continue shopping</button>
+  </a>
+</div>
 {% endif %} {% endblock %}

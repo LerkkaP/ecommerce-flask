@@ -1,26 +1,84 @@
 {% extends 'admin/master.html' %} {% block body %}
 <div class="container mt-4">
-  <h2 class="text-center">Watches</h2>
+  <form method="POST" action="{{ url_for('watches.add_watch') }}">
+    <div class="form-group">
+      <label for="brand">Brand</label>
+      <input
+        type="text"
+        class="form-control"
+        id="brand"
+        name="brand"
+        placeholder="Enter brand"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="model">Model</label>
+      <input
+        type="text"
+        class="form-control"
+        id="model"
+        name="model"
+        placeholder="Enter model"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="price">Price</label>
+      <input
+        type="number"
+        class="form-control"
+        id="price"
+        name="price"
+        placeholder="Enter price"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="description">Description</label>
+      <textarea
+        class="form-control"
+        id="description"
+        name="description"
+        rows="3"
+        placeholder="Enter description"
+        required
+      ></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Create</button>
+  </form>
+  <h2 class="text-left">Watches</h2>
   <table class="table table-striped text-center">
     <thead class="thead-dark">
       <tr>
-        <th scope="col" class="text-center">#</th>
-        <th scope="col" class="text-center">Watch id</th>
-        <th scope="col" class="text-center">Brand</th>
-        <th scope="col" class="text-center">Model</th>
-        <th scope="col" class="text-center">Price</th>
-        <th scope="col" class="text-center">Description</th>
+        <th scope="col" class="text-left">#</th>
+        <th scope="col" class="text-left">Watch id</th>
+        <th scope="col" class="text-left">Brand</th>
+        <th scope="col" class="text-left">Model</th>
+        <th scope="col" class="text-left">Price</th>
+        <th scope="col" class="text-left">Description</th>
+        <th scope="col" class="text-left">Remove</th>
       </tr>
     </thead>
     <tbody>
       {% for watch in watches %}
       <tr>
         <th scope="row">{{ loop.index0 + 1 }}</th>
-        <td>{{watch['id']}}</td>
-        <td>{{watch['brand']}}</td>
-        <td>{{watch['model']}}</td>
-        <td>{{watch['price']}} €</td>
-        <td>{{watch['description']}}</td>
+        <td class="text-left">{{watch['id']}}</td>
+        <td class="text-left">{{watch['brand']}}</td>
+        <td class="text-left">{{watch['model']}}</td>
+        <td class="text-left">{{watch['price']}} €</td>
+        <td class="text-left">{{watch['description']}}</td>
+        <td class="text-left">
+          <form
+            method="POST"
+            action="{{ url_for('watches.delete_watch', watch_id=watch['id'])}}"
+          >
+            <button class="btn btn-danger btn-secondary btn-sm">
+              Delete watch
+            </button>
+          </form>
+        </td>
       </tr>
       {% endfor %}
     </tbody>

@@ -1,7 +1,7 @@
 {% extends "base.html" %} {% block title %} Checkout {% endblock %} {% block
 content %}
 
-<div>
+<div class="checkout-page">
   <form method="POST">
     <h2>Fill in your information</h2>
     <div>
@@ -28,7 +28,7 @@ content %}
     </div>
     <h2>Select payment method</h2>
     <div>
-      <input type="radio" id="paypal" name="payment" />
+      <input type="radio" id="paypal" name="payment" value="paypal" />
       <label for="paypal">Paypal</label>
       <img
         src="{{url_for('static', filename='static/images/paypal.png')}}"
@@ -37,7 +37,7 @@ content %}
       />
     </div>
     <div>
-      <input type="radio" id="googlepay" name="payment" />
+      <input type="radio" id="googlepay" name="payment" value="googlepay" />
       <label for="googlepay">Google Pay</label>
       <img
         src="{{url_for('static', filename='static/images/google-pay.png')}}"
@@ -46,7 +46,7 @@ content %}
       />
     </div>
     <div>
-      <input type="radio" id="credit-card" name="payment" />
+      <input type="radio" id="credit-card" name="payment" value="credit-card" />
       <label for="credit-card">Credit Card</label>
       <img
         src="{{url_for('static', filename='static/images/credit-card.png')}}"
@@ -55,7 +55,12 @@ content %}
       />
     </div>
     <div>
-      <input type="radio" id="bank-transfer" name="payment" />
+      <input
+        type="radio"
+        id="bank-transfer"
+        name="payment"
+        value="bank-transfer"
+      />
       <label for="bank-transfer">Bank transfer</label>
       <img
         src="{{url_for('static', filename='static/images/bank-transfer.png')}}"

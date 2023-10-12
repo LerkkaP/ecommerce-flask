@@ -13,7 +13,7 @@ def create_app():
     app = Flask(__name__)
     app.config['SECRET_KEY'] = 'dev'
     app.config["SQLALCHEMY_DATABASE_URI"] = getenv("DATABASE_URL")
-    app.config['FLASK_ADMIN_SWATCH'] = 'flatly'
+    app.config['FLASK_ADMIN_SWATCH'] = 'materia'
     app.secret_key = getenv("SECRET_KEY")
 
     db.init_app(app)
@@ -27,6 +27,7 @@ def create_app():
     from .admin_views.orders import Orders
     from .admin_views.users import Users
     from .admin_views.watches import Watches
+    from .admin_views.stats import Stats
 
     app.register_blueprint(views, url_prefix='/')
     app.register_blueprint(auth, url_prefix='/')
@@ -48,11 +49,10 @@ def create_app():
             else:
                 return redirect('/login')
     
-    admin = Admin(app, name='ecommerceFlask', template_mode='bootstrap3')
+    admin = Admin(app, name='ecommerceFlask', template_mode='bootstrap4', index_view=Stats())
     admin.add_view(Orders(name='Orders', endpoint='orders'))
     admin.add_view(Users(name='Users', endpoint='users'))
     admin.add_view(Watches(name='Watches', endpoint='watches'))
-
 
 
     return app

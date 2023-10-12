@@ -6,42 +6,47 @@
   }
 </style>
 <div class="container mt-4">
-  <h2 class="text-center">Orders</h2>
+  <h2 class="text-left">Orders</h2>
   <table class="table table-striped text-center">
     <thead class="thead-dark">
       <tr>
-        <th scope="col" class="text-center">#</th>
-        <th scope="col" class="text-center">watch ID</th>
-        <th scope="col" class="text-center">First name</th>
-        <th scope="col" class="text-center">Last name</th>
-        <th scope="col" class="text-center">Shipping address</th>
-        <th scope="col" class="text-center">Billing address</th>
-        <th scope="col" class="text-center">Phone number</th>
-        <th scope="col" class="text-center">Email</th>
-        <th scope="col" class="text-center">Quantity</th>
-        <th scope="col" class="text-center">Payment method</th>
-        <th scope="col" class="text-center">Order date</th>
-        <th scope="col" class="text-center">Delete</th>
+        <th scope="col" class="text-left">#</th>
+        <th scope="col" class="text-left">watch ID</th>
+        <th scope="col" class="text-left">First name</th>
+        <th scope="col" class="text-left">Last name</th>
+        <th scope="col" class="text-left">Shipping address</th>
+        <th scope="col" class="text-left">Billing address</th>
+        <th scope="col" class="text-left">Phone number</th>
+        <th scope="col" class="text-left">Email</th>
+        <th scope="col" class="text-left">Quantity</th>
+        <th scope="col" class="text-left">Payment method</th>
+        <th scope="col" class="text-left">Order date</th>
+        <th scope="col" class="text-left">Delete</th>
       </tr>
     </thead>
     <tbody>
       {% for order in orders %}
       <tr>
         <th scope="row">{{ loop.index0 + 1 }}</th>
-        <td class="text-center">{{ order['watch_id'] }}</td>
-        <td class="text-center">{{ order['first_name'] }}</td>
-        <td class="text-center">{{ order['last_name'] }}</td>
-        <td class="text-center">{{ order['shipping_address'] }}</td>
-        <td class="text-center">{{ order['billing_address'] }}</td>
-        <td class="text-center">{{ order['phone_number'] }}</td>
-        <td class="text-center">{{ order['email'] }}</td>
-        <td class="text-center">{{ order['quantity'] }}</td>
-        <td class="text-center">{{ order['payment_method'] }}</td>
-        <td class="text-center">{{ order['order_date'] }}</td>
-        <td class="text-center">
-          <button class="btn btn-danger btn-secondary btn-sm">
-            Delete order
-          </button>
+        <td class="text-left">{{ order['watch_id'] }}</td>
+        <td class="text-left">{{ order['first_name'] }}</td>
+        <td class="text-left">{{ order['last_name'] }}</td>
+        <td class="text-left">{{ order['shipping_address'] }}</td>
+        <td class="text-left">{{ order['billing_address'] }}</td>
+        <td class="text-left">{{ order['phone_number'] }}</td>
+        <td class="text-left">{{ order['email'] }}</td>
+        <td class="text-left">{{ order['quantity'] }}</td>
+        <td class="text-left">{{ order['payment_method'] }}</td>
+        <td class="text-left">{{ order['order_date'] }}</td>
+        <td class="text-left">
+          <form
+            method="POST"
+            action="{{ url_for('orders.delete_order', user_id=order['user_id']) }}"
+          >
+            <button class="btn btn-danger btn-secondary btn-sm">
+              Delete order
+            </button>
+          </form>
         </td>
       </tr>
       {% endfor %}
