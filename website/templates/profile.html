@@ -1,6 +1,8 @@
 {% extends "base.html" %} {% block title %} Profile {% endblock %} {% block
 content %}
 <div class="profile-page">
+  <h1>{{username}}</h1>
+  <h2>Orders</h2>
   <form
     id="deleteProfile"
     action="{{url_for('profile.delete_profile')}}"
@@ -10,6 +12,21 @@ content %}
       Delete account
     </button>
   </form>
+  <div>
+    {% if orders %}
+    <h2>Your Orders</h2>
+    <ul>
+      {% for order in orders %}
+      <li>
+        Brand: {{ order.brand }}, Model: {{ order.model }}, Price: {{
+        order.price }}
+      </li>
+      {% endfor %}
+    </ul>
+    {% else %}
+    <p>You don't have any orders!</p>
+    {% endif %}
+  </div>
 </div>
 <script>
   const deleteConfirm = () => {

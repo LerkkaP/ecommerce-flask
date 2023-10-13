@@ -33,13 +33,18 @@ body {
 #signin,
 #signout {
   background-color: #9a7d31;
-  color: black;
+  color: #f5f5f5;
   padding-top: 5px;
   padding-bottom: 5px;
   padding-left: 20px;
   padding-right: 20px;
   border-radius: 4px;
   text-decoration: none;
+}
+
+#signin:hover,
+#signout:hover {
+  background-color: #6e561a;
 }
 
 .nav-item {
@@ -81,7 +86,7 @@ body {
 }
 
 .form-auth button {
-  color: black;
+  color: #f5f5f5;
   background: #9a7d31;
   border-radius: 4px;
   padding: 8px;
@@ -197,7 +202,7 @@ body {
 .details-info button {
   width: 100%;
   background-color: #9a7d31;
-  color: black;
+  color: #f5f5f5;
   padding-top: 5px;
   padding-bottom: 5px;
   padding-left: 20px;
@@ -211,7 +216,7 @@ body {
 .reviews-container button {
   margin-top: 1em;
   background-color: #9a7d31;
-  color: black;
+  color: #f5f5f5;
   padding-top: 5px;
   padding-bottom: 5px;
   padding-left: 20px;
@@ -283,7 +288,7 @@ hr {
   height: 34px;
   line-height: 34px;
   background-color: #9a7d31;
-  color: black;
+  color: #f5f5f5;
   text-align: center;
   display: inline-block;
 }
@@ -406,7 +411,7 @@ td img {
 
 .empty-cart button {
   background-color: #9a7d31;
-  color: black;
+  color: #f5f5f5;
   border: none;
   padding: 10px 20px;
   border-radius: 4px;
@@ -424,11 +429,106 @@ td img {
 
 /* CHECKOUT */
 
+.checkout-page {
+  text-align: center;
+}
+
+.checkout-page input {
+  margin: 0.5em;
+  padding: 8px;
+  border-radius: 4px;
+  border: solid 1.5px #161515;
+  background-color: #161515;
+  color: white;
+  outline: none;
+}
+
+.checkout-names,
+.checkout-address,
+.checkout-contact {
+  display: flex;
+  justify-content: center;
+}
+
+.payment-method {
+  display: flex;
+  justify-content: center;
+  list-style-type: none;
+  margin: 25px 0 0 0;
+  padding: 0;
+}
+
+.payment-method div {
+  float: left;
+  margin: 0 5px 0 0;
+  width: 100px;
+  height: 40px;
+  position: relative;
+}
+
+.payment-method label,
+.payment-method input {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.payment-method input[type="radio"] {
+  opacity: 0.011;
+  z-index: 100;
+}
+
+.payment-method input[type="radio"]:checked + label {
+  background: #161515;
+}
+
+.payment-method label {
+  padding: 5px;
+  cursor: pointer;
+  z-index: 90;
+  background-color: white;
+  border-radius: 4px;
+}
+
+.payment-method label:hover {
+  background: #ddd;
+}
+
+.payment-method img {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.place-order {
+  margin-top: 1em;
+}
+
+.place-order button {
+  background-color: #9a7d31;
+  color: #f5f5f5;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.place-order button:hover {
+  background-color: #6e561a;
+}
+
 /* PROFILE */
 
 .profile-page button {
   background-color: #9a7d31;
-  color: black;
+  color: #f5f5f5;
   border: none;
   padding: 10px 20px;
   border-radius: 4px;

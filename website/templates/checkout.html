@@ -4,71 +4,93 @@ content %}
 <div class="checkout-page">
   <form method="POST">
     <h2>Fill in your information</h2>
-    <div>
-      <input type="text" placeholder="First name" required name="first_name" />
+    <div class="checkout-names">
+      <div>
+        <input
+          type="text"
+          placeholder="First name"
+          required
+          name="first_name"
+        />
+      </div>
+      <div>
+        <input type="text" placeholder="Last name" required name="last_name" />
+      </div>
     </div>
-    <div>
-      <input type="text" placeholder="Last name" required name="last_name" />
+    <div class="checkout-address">
+      <div>
+        <input
+          type="text"
+          placeholder="Shipping address"
+          name="shipping_address"
+        />
+      </div>
+      <div>
+        <input
+          type="text"
+          placeholder="Billing address"
+          name="billing_address"
+        />
+      </div>
     </div>
-    <div>
-      <input
-        type="text"
-        placeholder="Shipping address"
-        name="shipping_address"
-      />
-    </div>
-    <div>
-      <input type="text" placeholder="Billing address" name="billing_address" />
-    </div>
-    <div>
-      <input type="tel" placeholder="Phone number" name="phone_number" />
-    </div>
-    <div>
-      <input type="email" placeholder="Email" name="email" />
+    <div class="checkout-contact">
+      <div>
+        <input type="tel" placeholder="Phone number" name="phone_number" />
+      </div>
+      <div>
+        <input type="email" placeholder="Email" name="email" />
+      </div>
     </div>
     <h2>Select payment method</h2>
-    <div>
-      <input type="radio" id="paypal" name="payment" value="paypal" />
-      <label for="paypal">Paypal</label>
-      <img
-        src="{{url_for('static', filename='static/images/paypal.png')}}"
-        width="80"
-        height="80"
-      />
+    <div class="payment-method">
+      <div>
+        <input type="radio" id="paypal" name="payment" value="paypal" />
+        <label for="paypal">
+          <img
+            src="{{url_for('static', filename='static/images/payment/paypal.png')}}"
+            width="80"
+            height="80"
+        /></label>
+      </div>
+      <div>
+        <input type="radio" id="googlepay" name="payment" value="googlepay" />
+        <label for="googlepay">
+          <img
+            src="{{url_for('static', filename='static/images/payment/google-pay.png')}}"
+            width="50"
+            height="50"
+        /></label>
+      </div>
+      <div>
+        <input
+          type="radio"
+          id="credit-card"
+          name="payment"
+          value="credit-card"
+        />
+        <label for="credit-card">
+          <img
+            src="{{url_for('static', filename='static/images/payment/mastercard.png')}}"
+            width="50"
+            height="50"
+        /></label>
+      </div>
+      <div>
+        <input
+          type="radio"
+          id="bank-transfer"
+          name="payment"
+          value="bank-transfer"
+        />
+        <label for="bank-transfer">
+          <img
+            src="{{url_for('static', filename='static/images/payment/skrill.png')}}"
+            width="50"
+            height="50"
+        /></label>
+      </div>
     </div>
-    <div>
-      <input type="radio" id="googlepay" name="payment" value="googlepay" />
-      <label for="googlepay">Google Pay</label>
-      <img
-        src="{{url_for('static', filename='static/images/google-pay.png')}}"
-        width="50"
-        height="50"
-      />
-    </div>
-    <div>
-      <input type="radio" id="credit-card" name="payment" value="credit-card" />
-      <label for="credit-card">Credit Card</label>
-      <img
-        src="{{url_for('static', filename='static/images/credit-card.png')}}"
-        width="50"
-        height="50"
-      />
-    </div>
-    <div>
-      <input
-        type="radio"
-        id="bank-transfer"
-        name="payment"
-        value="bank-transfer"
-      />
-      <label for="bank-transfer">Bank transfer</label>
-      <img
-        src="{{url_for('static', filename='static/images/bank-transfer.png')}}"
-        width="50"
-        height="50"
-      />
-    </div>
-    <div>
+    <div class="place-order">
       <button type="submit">Place order</button>
     </div>
   </form>
