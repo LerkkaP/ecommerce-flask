@@ -17,9 +17,6 @@
     <form action="{{url_for('carts.add_cart')}}" method="POST">
       <input type="hidden" name="watch_id" value="{{ details.watch_id }}" />
       <button>add to cart</button>
-      <br />
-      <label for="quantity">Quantity:</label>
-      <input type="number" name="quantity" value="1" min="1" />
     </form>
     {% endif %}
   </div>

@@ -41,23 +41,25 @@ def sign_up():
         password1 = request.form.get("password1")
         password2 = request.form.get("password2")
 
-        hash_value = generate_password_hash(password1)
-
-        reg = "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$"
-        
-        # if check_password_hash(username, password1) == check_password_hash(username, password2)
-
-        if len(username) < 4:
-            flash("username must be at least 4 characters long", category='error')
-        elif password1 != password2:
-            flash("Passwords didn't match", category="error")
-        elif not re.match(reg, password1):
-            flash("Make sure your password fulfills the following requirements: is at least 8 characters long, contains at least one uppercase and lowercase letter, has a digit and a special character.", category="error")
+        check_username = db.session.execute(text("SELECT EXISTS (SELECT username FROM users WHERE username=:username)"), {"username": username})
+        if check_username.fetchone()[0]:
+            flash("Username is already taken", category="error")
         else:
-            query = ("INSERT INTO users (username, password, privileges) VALUES (:username, :password, :privileges);")
-            db.session.execute(text(query), {'username': username, 'password': hash_value, 'privileges': 'customer'})
-            db.session.commit()
-            flash("Account created!", category="success")
+            hash_value = generate_password_hash(password1)
+
+            reg = "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$"
+
+            if len(username) < 4:
+                flash("username must be at least 4 characters long", category='error')
+            elif password1 != password2:
+                flash("Passwords didn't match", category="error")
+            elif not re.match(reg, password1):
+                flash("Make sure your password fulfills the following requirements: is at least 8 characters long, contains at least one uppercase and lowercase letter, has a digit and a special character.", category="error")
+            else:
+                query = ("INSERT INTO users (username, password, privileges) VALUES (:username, :password, :privileges);")
+                db.session.execute(text(query), {'username': username, 'password': hash_value, 'privileges': 'customer'})
+                db.session.commit()
+                flash("Account created!", category="success")
 
     '''
       password validation:
@@ -66,8 +68,5 @@ def sign_up():
       - at leaast one uppercase character (A-Z)
       - A number (0-9) and/or symbol (such as !, #, or %)
     '''
-
-
-    # Don't let create name that is already in database
 
     return render_template('sign_up.html')

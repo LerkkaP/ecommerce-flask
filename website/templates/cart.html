@@ -17,19 +17,38 @@
             />
           </a>
           <div>
-            <p>{{item[2]}} {{item[3]}}</p>
-            <small>Price: {{ item[4] }} €</small>
+            <p>{{item.brand}} {{item.model}}</p>
+            <small>Price: {{ item.price }} €</small>
             <br />
-            <a>Remove</a>
+            <form
+              action="{{ url_for('carts.delete_item', watch_id=item.watch_id)}}"
+              method="POST"
+            >
+              <button>Remove</button>
+            </form>
           </div>
         </div>
       </td>
-      <td>{{item[1]}}</td>
-      <td>{{item[4] * item[1]}} €</td>
+      <td>
+        <div style="display: flex; align-items: center">
+          <form action="{{url_for('carts.decrease_quantity')}}" method="POST">
+            <input type="hidden" name="watch_id" value="{{ item.watch_id }}" />
+            <input type="hidden" name="quantity" value="{{ item.quantity }}" />
+            <button>-</button>
+          </form>
+          <span>{{item.quantity}}</span>
+          <form action="{{url_for('carts.increase_quantity')}}" method="POST">
+            <input type="hidden" name="watch_id" value="{{ item.watch_id }}" />
+            <input type="hidden" name="quantity" value="{{ item.quantity }}" />
+            <button>+</button>
+          </form>
+        </div>
+      </td>
+      <td>{{item.price * item.quantity}} €</td>
     </tr>
     {% endfor %}
   </table>
-  <p>Total: <b>{{summa}}</b> €</p>
+  <p>Total: {{summa}}€</p>
   <a id="checkout" href="/checkout">Proceed to checkout</a>
 </div>
 {% else %}
