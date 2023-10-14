@@ -3,7 +3,7 @@ from flask import redirect, url_for
 from flask_admin import BaseView, expose
 from sqlalchemy.sql import text
 
-from .. import db
+from ..db import db
 
 class Stats(AdminIndexView):
     @expose('/')

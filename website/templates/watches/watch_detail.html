@@ -15,7 +15,7 @@
     <p>There is no description of this watch.</p>
     {% endif %} {% if session.user_id %}
     <form action="{{url_for('carts.add_cart')}}" method="POST">
-      <input type="hidden" name="watch_id" value="{{ details.watch_id }}" />
+      <input type="hidden" name="watch_id" value="{{ details.id }}" />
       <button>add to cart</button>
     </form>
     {% endif %}

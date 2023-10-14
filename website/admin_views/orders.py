@@ -2,7 +2,7 @@ from flask import redirect, url_for, request
 from flask_admin import BaseView, expose
 from sqlalchemy.sql import text
 
-from .. import db
+from ..db import db
 
 class Orders(BaseView):
     @expose('/')
