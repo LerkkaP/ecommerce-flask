@@ -14,12 +14,12 @@
       {% for user in users %}
       <tr>
         <th scope="row">{{ loop.index0 + 1 }}</th>
-        <td class="text-left">{{ user['username'] }}</td>
-        <td class="text-left">{{ user['privileges'] }}</td>
+        <td class="text-left">{{ user.username }}</td>
+        <td class="text-left">{{ user.privileges }}</td>
         <td class="text-left">
           <form
             method="POST"
-            action="{{ url_for('users.delete_user', user_id=user['id']) }}"
+            action="{{ url_for('users.delete_user', user_id=user.id) }}"
           >
             <button class="btn btn-danger btn-secondary btn-sm">
               Delete user

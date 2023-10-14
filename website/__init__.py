@@ -18,7 +18,7 @@ def create_app():
 
     db.init_app(app)
 
-    from .views import views
+    from .watches import watches
     from .auth import auth
     from .carts import carts
     from .profile import profile
@@ -26,10 +26,10 @@ def create_app():
 
     from .admin_views.orders import Orders
     from .admin_views.users import Users
-    from .admin_views.watches import Watches
+    from .admin_views.storage import Storage
     from .admin_views.stats import Stats
 
-    app.register_blueprint(views, url_prefix='/')
+    app.register_blueprint(watches, url_prefix='/')
     app.register_blueprint(auth, url_prefix='/')
     app.register_blueprint(carts, url_prefix='/')
     app.register_blueprint(profile, url_prefix='/')
@@ -52,7 +52,7 @@ def create_app():
     admin = Admin(app, name='ecommerceFlask', template_mode='bootstrap4', index_view=Stats())
     admin.add_view(Orders(name='Orders', endpoint='orders'))
     admin.add_view(Users(name='Users', endpoint='users'))
-    admin.add_view(Watches(name='Watches', endpoint='watches'))
+    admin.add_view(Storage(name='Storage', endpoint='storage'))
 
 
     return app

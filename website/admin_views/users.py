@@ -10,17 +10,8 @@ class Users(BaseView):
         query = db.session.execute(text("SELECT id, username, privileges FROM users;"))
 
         users = query.fetchall()
-
-        users_list = []
-        for user in users:
-            users_dict = {
-                'id': user[0],
-                'username': user[1],
-                'privileges': user[2],
-            }
-            users_list.append(users_dict)
-
-        return self.render('admin/users.html', users=users_list)
+        
+        return self.render('admin/users.html', users=users)
     
     @expose('/delete_user/<int:user_id>', methods=['POST'])
     def delete_user(self, user_id):

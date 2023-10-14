@@ -1,6 +1,6 @@
 {% extends 'admin/master.html' %} {% block body %}
 <div class="container mt-4">
-  <form method="POST" action="{{ url_for('watches.add_watch') }}">
+  <form method="POST" action="{{ url_for('storage.add_watch') }}">
     <div class="form-group">
       <label for="brand">Brand</label>
       <input
@@ -64,15 +64,15 @@
       {% for watch in watches %}
       <tr>
         <th scope="row">{{ loop.index0 + 1 }}</th>
-        <td class="text-left">{{watch['id']}}</td>
-        <td class="text-left">{{watch['brand']}}</td>
-        <td class="text-left">{{watch['model']}}</td>
-        <td class="text-left">{{watch['price']}} €</td>
-        <td class="text-left">{{watch['description']}}</td>
+        <td class="text-left">{{watch.id}}</td>
+        <td class="text-left">{{watch.brand}}</td>
+        <td class="text-left">{{watch.model}}</td>
+        <td class="text-left">{{watch.price}} €</td>
+        <td class="text-left">{{watch.description}}</td>
         <td class="text-left">
           <form
             method="POST"
-            action="{{ url_for('watches.delete_watch', watch_id=watch['id'])}}"
+            action="{{ url_for('storage.delete_watch', watch_id=watch['id'])}}"
           >
             <button class="btn btn-danger btn-secondary btn-sm">
               Delete watch

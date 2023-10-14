@@ -8,7 +8,6 @@ carts = Blueprint('carts', __name__)
 @carts.route('/addcart', methods=['POST'])
 def add_cart():
     watch_id = request.form.get('watch_id')
-    quantity = request.form.get('quantity')
     user_id = session.get("user_id")
     
     if request.method == "POST":
@@ -25,7 +24,7 @@ def add_cart():
             db.session.commit()
             flash("Item updated")
 
-        return redirect(url_for('view.watch_detail', id=watch_id))
+        return redirect(url_for('watches.watch_detail', id=watch_id))
 
 @carts.route('/shopping-cart', methods=['GET'])
 def shopping_cart():

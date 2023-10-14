@@ -11,7 +11,7 @@
     <tr>
       <td>
         <div class="cart-info">
-          <a href="{{ url_for('view.watch_detail', id=item[0]) }}">
+          <a href="{{ url_for('watches.watch_detail', id=item[0]) }}">
             <img
               src="{{url_for('static', filename='static/images/watches/' ~ item[2] ~ '_' ~ item[3] ~ '.png')}}"
             />
@@ -55,8 +55,8 @@
 
 <div class="empty-cart">
   <h2>Your cart is empty!</h2>
-  <img src="{{url_for('static', filename='static/images/cart.png')}}" />
-  <a href="{{ url_for('view.watches')}}">
+  <img src="{{url_for('static', filename='static/images/misc/cart.png')}}" />
+  <a href="{{ url_for('watches.all_watches')}}">
     <button>Continue shopping</button>
   </a>
 </div>

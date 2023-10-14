@@ -4,7 +4,7 @@
   {% for watch in watches %}
   <div class="watch-card">
     <div class="watch-image">
-      <a href="{{ url_for('view.watch_detail', id=watch.id) }}">
+      <a href="{{ url_for('watches.watch_detail', id=watch.id) }}">
         <img
           src="{{url_for('static', filename='static/images/watches/' ~ watch.
           brand ~ '_' ~ watch.model ~ '.png')}}"
@@ -22,7 +22,7 @@
   {% for i in range(1, total_pages + 1) %} {% if i == page %}
   <span>{{ i }}</span>
   {% else %}
-  <a href="{{ url_for('view.watches', page=i) }}">{{ i }}</a>
+  <a href="{{ url_for('watches.all_watches', page=i) }}">{{ i }}</a>
   {% endif %} {% endfor %}
 </div>
 {% endblock %}

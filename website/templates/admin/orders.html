@@ -28,21 +28,20 @@
       {% for order in orders %}
       <tr>
         <th scope="row">{{ loop.index0 + 1 }}</th>
-        <td class="text-left">{{ order['watch_id'] }}</td>
-        <td class="text-left">{{ order['first_name'] }}</td>
-        <td class="text-left">{{ order['last_name'] }}</td>
-        <td class="text-left">{{ order['shipping_address'] }}</td>
-        <td class="text-left">{{ order['billing_address'] }}</td>
-        <td class="text-left">{{ order['phone_number'] }}</td>
-        <td class="text-left">{{ order['email'] }}</td>
-        <td class="text-left">{{ order['quantity'] }}</td>
-        <td class="text-left">{{ order['payment_method'] }}</td>
-        <td class="text-left">{{ order['order_date'] }}</td>
+        <td class="text-left">{{ order.watch_id }}</td>
+        <td class="text-left">{{ order.first_name }}</td>
+        <td class="text-left">{{ order.last_name }}</td>
+        <td class="text-left">{{ order.shipping_address }}</td>
+        <td class="text-left">{{ order.billing_address }}</td>
+        <td class="text-left">{{ order.phone_number }}</td>
+        <td class="text-left">{{ order.email }}</td>
+        <td class="text-left">{{ order.quantity }}</td>
+        <td class="text-left">{{ order.payment_method }}</td>
+        <td class="text-left">{{ order.order_date }}</td>
         <td class="text-left">
-          <form
-            method="POST"
-            action="{{ url_for('orders.delete_order', user_id=order['user_id']) }}"
-          >
+          <form method="POST" action="{{ url_for('orders.delete_order')}}">
+            <input type="hidden" name="order_id" value="{{ order.id }}" />
+            <input type="hidden" name="user_id" value="{{ order.user_id }}" />
             <button class="btn btn-danger btn-secondary btn-sm">
               Delete order
             </button>

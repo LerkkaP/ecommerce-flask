@@ -5,25 +5,14 @@ from sqlalchemy.sql import text
 
 from .. import db
 
-class Watches(BaseView):
+class Storage(BaseView):
     @expose('/')
     def index(self):
         query = db.session.execute(text("SELECT * FROM watches;"))
 
         watches = query.fetchall()
 
-        watch_list = []
-        for watch in watches:
-            watches_dict = {
-                'id': watch[0],
-                'brand': watch[1],
-                'model': watch[2],
-                'price': watch[3],
-                'description': watch[4]
-            }
-            watch_list.append(watches_dict)
-
-        return self.render('admin/watches.html', watches=watch_list)
+        return self.render('admin/watches.html', watches=watches)
     
 
     @expose('/add_watch', methods=["POST"])
@@ -37,8 +26,7 @@ class Watches(BaseView):
             db.session.commit()
 
             return redirect(url_for('.index'))
-        
-
+    
     @expose('/delete_watch/<int:watch_id>', methods=["POST"])
     def delete_watch(self, watch_id):
         if request.method == "POST":
