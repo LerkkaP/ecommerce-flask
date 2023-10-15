@@ -22,11 +22,11 @@ def create_app():
     from .routes.profile_routes import profile
     from .routes.checkout_routes import checkout
 
-    from .admin_views.orders import Orders
-    from .admin_views.users import Users
-    from .admin_views.storage import Storage
-    from .admin_views.stats import Stats
-
+    from .admin.routes.orders_routes import Orders
+    from .admin.routes.users_routes import Users
+    from .admin.routes.storage_routes import Storage
+    from .admin.routes.stats_routes import Stats
+    
     app.register_blueprint(watches, url_prefix='/')
     app.register_blueprint(auth, url_prefix='/')
     app.register_blueprint(carts, url_prefix='/')
