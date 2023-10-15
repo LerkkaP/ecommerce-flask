@@ -1,5 +1,8 @@
 from flask import Blueprint, render_template, request, flash, redirect, session
 from ..views.auth import login_user, logout_user, register_user
+
+from ..decorators import login_required
+
 auth = Blueprint('auth', __name__)
 
 @auth.route('/login', methods = ['GET', 'POST'])
@@ -20,6 +23,7 @@ def login():
             return redirect('/')
 
 @auth.route('/logout')
+@login_required
 def logout():
 
     logout_user()

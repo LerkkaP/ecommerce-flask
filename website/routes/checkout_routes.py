@@ -1,9 +1,12 @@
 from flask import Blueprint, render_template, redirect, flash, request
 from ..views.checkout import checkout_items
+
+from ..decorators import login_required
+
 checkout = Blueprint('checkout', __name__)
 
-
 @checkout.route('/checkout', methods=['GET', 'POST'])
+@login_required
 def checkout_page():
     if request.method == 'GET':
         return render_template("checkout/checkout.html")

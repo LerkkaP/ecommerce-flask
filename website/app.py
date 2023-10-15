@@ -33,20 +33,6 @@ def create_app():
     app.register_blueprint(profile, url_prefix='/')
     app.register_blueprint(checkout, url_prefix='/')
 
-    @app.before_request
-    def check_admin_access():
-        if request.path.startswith('/admin'):
-            user_id = session.get('user_id')
-            if user_id is not None:
-                query = "SELECT privileges FROM users WHERE id=:id"
-                result = db.session.execute(text(query), {'id': user_id})
-                privileges = result.fetchone()
-
-                if not (privileges and privileges[0] == 'admin'):
-                    return render_template("messages/denied.html")
-            else:
-                return redirect('/login')
-    
     admin = Admin(app, name='ecommerceFlask', template_mode='bootstrap4', index_view=Stats())
     admin.add_view(Orders(name='Orders', endpoint='orders'))
     admin.add_view(Users(name='Users', endpoint='users'))
