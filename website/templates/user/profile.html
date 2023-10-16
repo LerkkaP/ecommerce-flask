@@ -8,6 +8,7 @@ content %}
     action="{{url_for('profile.delete_profile')}}"
     method="POST"
   >
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
     <button type="button" onclick="deleteConfirm(this.form)">
       Delete account
     </button>

@@ -3,6 +3,7 @@
 
 <div class="form-auth">
   <form method="POST">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
     <div>
       <div>
         <h2>Sign in</h2>

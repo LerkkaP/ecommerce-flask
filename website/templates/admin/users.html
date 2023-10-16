@@ -21,6 +21,7 @@
             method="POST"
             action="{{ url_for('users.delete_user', user_id=user.id) }}"
           >
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
             <button class="btn btn-danger btn-secondary btn-sm">
               Delete user
             </button>

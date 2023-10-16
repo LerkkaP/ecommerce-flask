@@ -24,6 +24,11 @@
               action="{{ url_for('carts.delete_item', watch_id=item.watch_id)}}"
               method="POST"
             >
+              <input
+                type="hidden"
+                name="csrf_token"
+                value="{{ csrf_token() }}"
+              />
               <button>Remove</button>
             </form>
           </div>
@@ -32,12 +37,14 @@
       <td>
         <div style="display: flex; align-items: center">
           <form action="{{url_for('carts.decrease_quantity')}}" method="POST">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
             <input type="hidden" name="watch_id" value="{{ item.watch_id }}" />
             <input type="hidden" name="quantity" value="{{ item.quantity }}" />
             <button>-</button>
           </form>
           <span>{{item.quantity}}</span>
           <form action="{{url_for('carts.increase_quantity')}}" method="POST">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
             <input type="hidden" name="watch_id" value="{{ item.watch_id }}" />
             <input type="hidden" name="quantity" value="{{ item.quantity }}" />
             <button>+</button>

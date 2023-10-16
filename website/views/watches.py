@@ -24,7 +24,10 @@ def get_watch_detail(id):
     query = db.session.execute(text("SELECT id, brand, model, price, description FROM watches WHERE id=:watch_id;"), {'watch_id': id})
     details = query.fetchone()
 
-    review_query = db.session.execute(text("SELECT * FROM reviews WHERE watch_id=:watch_id;"), {'watch_id': id})
+    review_query = db.session.execute(text("SELECT users.username, reviews.review, reviews.rating, reviews.review_date "
+                                        "FROM reviews "
+                                        "JOIN users ON reviews.user_id = users.id "
+                                        "WHERE reviews.watch_id=:watch_id;"), {'watch_id': id})
     reviews = review_query.fetchall()
 
     return details, reviews

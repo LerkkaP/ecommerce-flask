@@ -40,6 +40,7 @@
         <td class="text-left">{{ order.order_date }}</td>
         <td class="text-left">
           <form method="POST" action="{{ url_for('orders.delete_order')}}">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
             <input type="hidden" name="order_id" value="{{ order.id }}" />
             <input type="hidden" name="user_id" value="{{ order.user_id }}" />
             <button class="btn btn-danger btn-secondary btn-sm">

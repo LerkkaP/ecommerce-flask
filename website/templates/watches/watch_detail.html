@@ -8,14 +8,17 @@
   </div>
 
   <div class="details-info">
-    <h2>{{ details.brand }} {{ details.model }} {{ details.price }} €</h2>
+    <h2>{{ details.brand }} {{ details.model }}</h2>
+    <h2>{{ details.price }} €</h2>
     {% if details.description %}
     <p class="details-description">{{ details.description }}</p>
+    <hr />
     {% else %}
     <p>There is no description of this watch.</p>
     {% endif %} {% if session.user_id %}
     <form action="{{url_for('carts.add_cart')}}" method="POST">
       <input type="hidden" name="watch_id" value="{{ details.id }}" />
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
       <button>add to cart</button>
     </form>
     {% endif %}
@@ -29,17 +32,35 @@
   <hr />
   <div>
     <div>
-      <span>Username</span>
       {% if review.rating == 1 %}
       <span>&#11088;</span>
+      <span>{{review.username}}</span>
+      <span>&#183;</span>
+      <span>{{review.review_date}}</span>
+
       {% elif review.rating == 2 %}
       <span>&#11088;&#11088;</span>
+      <span>{{review.username}}</span>
+      <span>&#183;</span>
+      <span>{{review.review_date}}</span>
+
       {% elif review.rating == 3 %}
       <span>&#11088;&#11088;&#11088;</span>
+      <span>{{review.username}}</span>
+      <span>&#183;</span>
+      <span>{{review.review_date}}</span>
+
       {% elif review.rating == 4 %}
       <span>&#11088;&#11088;&#11088;&#11088;</span>
+      <span>{{review.username}}</span>
+      <span>&#183;</span>
+      <span>{{review.review_date}}</span>
+
       {% elif review.rating == 5 %}
       <span>&#11088;&#11088;&#11088;&#11088;&#11088;</span>
+      <span>{{review.username}}</span>
+      <span>&#183;</span>
+      <span>{{review.review_date}}</span>
     </div>
     {% endif %}
     <div class="review-text">{{ review.review }}</div>
@@ -49,7 +70,17 @@
   {% endif %} {% if session.user_id %}
   <div>
     <form method="POST">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
       <div>
+        <div class="description">
+          <label for="description">Review</label>
+          <textarea
+            placeholder="Write a review..."
+            rows="5"
+            name="description"
+            id="description"
+          ></textarea>
+        </div>
         <div>
           <label for="ratings">Give rating</label>
           <select name="ratings" id="ratings">
@@ -59,15 +90,6 @@
             <option>4</option>
             <option>5</option>
           </select>
-        </div>
-        <div class="description">
-          <label for="description">Review</label>
-          <textarea
-            placeholder="Write a review..."
-            rows="5"
-            name="description"
-            id="description"
-          ></textarea>
         </div>
         <div><button type="submit">submit</button></div>
       </div>

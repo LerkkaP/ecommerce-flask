@@ -3,9 +3,7 @@ from flask import redirect, url_for, request
 from flask_admin import BaseView, expose
 
 from ..views.storage import show_storage, add_to_storage, delete_from_storage
-
 from ...decorators import admin_login_required
-
 
 class Storage(BaseView):
     @expose('/')

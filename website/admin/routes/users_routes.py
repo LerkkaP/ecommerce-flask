@@ -2,9 +2,7 @@ from flask import redirect, url_for
 from flask_admin import BaseView, expose
 
 from ..views.users import users_page, remove_user
-
 from ...decorators import admin_login_required
-
 
 class Users(BaseView):
     @expose('/')

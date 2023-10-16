@@ -18,7 +18,10 @@ def watch_detail(id):
         description = request.form.get("description")
         user_id = session.get("user_id")
 
-        add_review(id, user_id, rating, description)
-        flash("Review added!")
+        if len(description) > 1000:
+            flash("Review length exceeds 1000 characters!", category="error")
+        else:
+            add_review(id, user_id, rating, description)
+            flash("Review added!")
 
         return redirect(url_for('watches.watch_detail', id=id))
