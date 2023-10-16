@@ -2,7 +2,6 @@
 content %}
 <div class="profile-page">
   <h1>{{username}}</h1>
-  <h2>Orders</h2>
   <form
     id="deleteProfile"
     action="{{url_for('profile.delete_profile')}}"
@@ -10,7 +9,7 @@ content %}
   >
     <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
     <button type="button" onclick="deleteConfirm(this.form)">
-      Delete account
+      Delete Account
     </button>
   </form>
   <div>

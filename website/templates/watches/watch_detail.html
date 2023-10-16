@@ -12,14 +12,13 @@
     <h2>{{ details.price }} €</h2>
     {% if details.description %}
     <p class="details-description">{{ details.description }}</p>
-    <hr />
     {% else %}
     <p>There is no description of this watch.</p>
     {% endif %} {% if session.user_id %}
     <form action="{{url_for('carts.add_cart')}}" method="POST">
       <input type="hidden" name="watch_id" value="{{ details.id }}" />
       <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
-      <button>add to cart</button>
+      <button>Add To Cart</button>
     </form>
     {% endif %}
   </div>
