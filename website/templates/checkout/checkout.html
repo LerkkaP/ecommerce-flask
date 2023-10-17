@@ -2,7 +2,8 @@
 content %}
 
 <div class="checkout-page">
-  <form method="POST">
+  <form method="POST" id="checkoutForm">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
     <h2>Fill in your information</h2>
     <div class="checkout-names">
       <div>
@@ -94,6 +95,26 @@ content %}
       <button type="submit">Place order</button>
     </div>
   </form>
+  <script>
+    document
+      .getElementById("checkoutForm")
+      .addEventListener("submit", function (e) {
+        var paymentMethods = document.getElementsByName("payment");
+        var paymentSelected = false;
+
+        for (var i = 0; i < paymentMethods.length; i++) {
+          if (paymentMethods[i].checked) {
+            paymentSelected = true;
+            break;
+          }
+        }
+
+        if (!paymentSelected) {
+          alert("Please select a payment method.");
+          e.preventDefault();
+        }
+      });
+  </script>
 </div>
 
 {% endblock %}

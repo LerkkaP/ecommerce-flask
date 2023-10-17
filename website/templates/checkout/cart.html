@@ -17,8 +17,10 @@
             />
           </a>
           <div>
-            <p>{{item.brand}} {{item.model}}</p>
-            <small>Price: {{ item.price }} €</small>
+            <p style="text-transform: uppercase">
+              {{item.brand}} {{item.model}}
+            </p>
+            <small>{{ item.price }} €</small>
             <br />
             <form
               action="{{ url_for('carts.delete_item', watch_id=item.watch_id)}}"
@@ -29,7 +31,7 @@
                 name="csrf_token"
                 value="{{ csrf_token() }}"
               />
-              <button>Remove</button>
+              <button id="removeButton">Remove</button>
             </form>
           </div>
         </div>
@@ -40,14 +42,14 @@
             <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
             <input type="hidden" name="watch_id" value="{{ item.watch_id }}" />
             <input type="hidden" name="quantity" value="{{ item.quantity }}" />
-            <button>-</button>
+            <button id="decrease">-</button>
           </form>
-          <span>{{item.quantity}}</span>
+          <span id="quantity">{{item.quantity}}</span>
           <form action="{{url_for('carts.increase_quantity')}}" method="POST">
             <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
             <input type="hidden" name="watch_id" value="{{ item.watch_id }}" />
             <input type="hidden" name="quantity" value="{{ item.quantity }}" />
-            <button>+</button>
+            <button id="increase">+</button>
           </form>
         </div>
       </td>
@@ -55,7 +57,7 @@
     </tr>
     {% endfor %}
   </table>
-  <p>Total: {{summa}}€</p>
+  <p><b>Total: {{summa}}€</b></p>
   <a id="checkout" href="/checkout">Proceed to checkout</a>
 </div>
 {% else %}

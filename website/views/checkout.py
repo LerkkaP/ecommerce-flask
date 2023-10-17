@@ -7,6 +7,8 @@ def checkout_items(first_name, last_name, shipping_address, billing_address, pho
     user_id = session.get("user_id")
     order_date = date.today()
 
+
+
     cart_query = db.session.execute(text("SELECT watch_id, quantity FROM cart WHERE user_id=:user_id;"), {"user_id": user_id})
     cart_results = cart_query.fetchall()
 

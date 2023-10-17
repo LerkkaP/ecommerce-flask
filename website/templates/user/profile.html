@@ -17,10 +17,9 @@ content %}
     <h2>Your Orders</h2>
     <ul>
       {% for order in orders %}
-      <li>
-        Brand: {{ order.brand }}, Model: {{ order.model }}, Price: {{
-        order.price }}
-      </li>
+      <a href="{{ url_for('watches.watch_detail', id=order.watch_id) }}">
+        <li>{{ order.brand }} {{ order.model }} {{ order.price }}</li>
+      </a>
       {% endfor %}
     </ul>
     {% else %}

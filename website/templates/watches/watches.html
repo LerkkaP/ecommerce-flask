@@ -12,7 +12,10 @@
       </a>
     </div>
     <div class="watch-info">
-      <p>{{ watch.brand }} {{ watch.model }} {{ watch.price }} €</p>
+      <p style="text-transform: uppercase">
+        {{ watch.brand }} {{ watch.model }}
+      </p>
+      <p>{{ watch.price }} €</p>
     </div>
   </div>
   {% endfor %}

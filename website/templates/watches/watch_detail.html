@@ -8,8 +8,8 @@
   </div>
 
   <div class="details-info">
-    <h2>{{ details.brand }} {{ details.model }}</h2>
-    <h2>{{ details.price }} €</h2>
+    <h2 id="watch-name">{{ details.brand }} {{ details.model }}</h2>
+    <h2 id="watch-price">{{ details.price }} €</h2>
     {% if details.description %}
     <p class="details-description">{{ details.description }}</p>
     {% else %}
@@ -32,31 +32,31 @@
   <div>
     <div>
       {% if review.rating == 1 %}
-      <span>&#11088;</span>
+      <span>&#9733;</span>
       <span>{{review.username}}</span>
       <span>&#183;</span>
       <span>{{review.review_date}}</span>
 
       {% elif review.rating == 2 %}
-      <span>&#11088;&#11088;</span>
+      <span>&#9733;&#9733;</span>
       <span>{{review.username}}</span>
       <span>&#183;</span>
       <span>{{review.review_date}}</span>
 
       {% elif review.rating == 3 %}
-      <span>&#11088;&#11088;&#11088;</span>
+      <span>&#9733;&#9733;&#9733;</span>
       <span>{{review.username}}</span>
       <span>&#183;</span>
       <span>{{review.review_date}}</span>
 
       {% elif review.rating == 4 %}
-      <span>&#11088;&#11088;&#11088;&#11088;</span>
+      <span>&#9733;&#9733;&#9733;&#9733;</span>
       <span>{{review.username}}</span>
       <span>&#183;</span>
       <span>{{review.review_date}}</span>
 
       {% elif review.rating == 5 %}
-      <span>&#11088;&#11088;&#11088;&#11088;&#11088;</span>
+      <span style="font-size: 20px">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
       <span>{{review.username}}</span>
       <span>&#183;</span>
       <span>{{review.review_date}}</span>
