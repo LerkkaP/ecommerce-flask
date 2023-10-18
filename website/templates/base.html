@@ -34,6 +34,19 @@
             </li>
             {% if session.user_id %}
             <li class="nav-item">
+              <form id="searchForm">
+                <input
+                  placeholder="Search by brand..."
+                  type="text"
+                  name="search"
+                />
+              </form>
+
+              <div id="searchResults" class="search-results">
+                <div class="no-results">No results found</div>
+              </div>
+            </li>
+            <li class="nav-item">
               <a href="/">Watches</a>
             </li>
             <li class="nav-item">
@@ -46,6 +59,9 @@
               <a id="signout" href="/logout">Sign out</a>
             </li>
             {% else %}
+            <li class="nav-item">
+              <input />
+            </li>
             <li class="nav-item">
               <a href="/">Watches</a>
             </li>
@@ -88,23 +104,12 @@
           alt="Tag Heuer"
         />
         <div class="copyright">
-          <small class="copyright-text">&copy; Copyright 2023, Erik Peteri</small>
+          <small class="copyright-text"
+            >&copy; Copyright 2023, Erik Peteri</small
+          >
         </div>
       </div>
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-      <script>
-        document.addEventListener("DOMContentLoaded", function () {
-          const flashes = document.querySelectorAll(
-            ".flashes .error, .flashes .success"
-          );
-
-          flashes.forEach(function (flash) {
-            setTimeout(function () {
-              flash.style.display = "none";
-            }, 5000);
-          });
-        });
-      </script>
+      <script src="{{ url_for('static', filename='static/js/script.js') }}"></script>
     </div>
   </body>
 </html>

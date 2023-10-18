@@ -15,9 +15,11 @@ content %}
     </form>
   </div>
   <div class="profile-orders">
-    {% if orders %}  
+    {% if orders %}
     <table>
-      <caption>Your orders</caption>
+      <caption>
+        Your orders
+      </caption>
       <thead>
         <tr>
           <th scope="col">Watch</th>
@@ -31,7 +33,9 @@ content %}
 
         <tr>
           <td data-label="Watch">
-            <a href="{{ url_for('watches.watch_detail', id=order.watch_id) }}">{{order.brand}} {{order.model}}</a>
+            <a href="{{ url_for('watches.watch_detail', id=order.watch_id) }}"
+              >{{order.brand}} {{order.model}}</a
+            >
           </td>
           <td data-label="Price">{{order.price}} €</td>
           <td data-label="Quantity">{{order.quantity}}</td>
@@ -40,15 +44,6 @@ content %}
         {% endfor %}
       </tbody>
     </table>
-    <!--<h2>Your Orders</h2>
-    <ul>
-      {% for order in orders %}
-
-      <a href="{{ url_for('watches.watch_detail', id=order.watch_id) }}">
-        <li>{{ order.brand }} {{ order.model }} {{ order.price }}</li>
-      </a>
-      {% endfor %}
-    </ul>-->
     {% else %}
     <p>You don't have any orders!</p>
     {% endif %}
@@ -61,7 +56,4 @@ content %}
     }
   };
 </script>
-{% endblock %}
-
-
-/*     */
+{% endblock %} /* */

@@ -422,7 +422,6 @@ td {
   padding: 10px 5px;
 }
 
-
 td img {
   height: 200px;
   margin-right: 10px;
@@ -516,7 +515,6 @@ td img {
 
 .payment-method label,
 .payment-method input {
-  
   display: block;
   position: absolute;
   top: 0;
@@ -537,7 +535,7 @@ td img {
 
 .payment-method label {
   padding: 5px;
-  
+
   cursor: pointer;
   z-index: 90;
   background-color: #f5f5f5;
@@ -549,7 +547,6 @@ td img {
 }
 
 .payment-method img {
-  
   margin: 0;
   position: absolute;
   top: 50%;
@@ -583,22 +580,21 @@ td img {
   flex-direction: row;
 }
 
-
-.profile-data { 
+.profile-data {
   background-color: #161515;
   text-align: center;
-  width: 20%; 
-  height: 100vh; 
-  color: white; 
+  width: 20%;
+  height: 100vh;
+  color: white;
   border-right: 1px solid #9a7d31;
   border-radius: 4px;
-} 
+}
 
-.profile-orders { 
-  width: 100%; 
-  height: 100vh; 
+.profile-orders {
+  width: 100%;
+  height: 100vh;
   text-align: center;
-} 
+}
 
 .profile-orders a {
   text-decoration: none;
@@ -639,24 +635,24 @@ table {
 
 table caption {
   font-size: 1.5em;
-  margin: .5em 0 .75em;
+  margin: 0.5em 0 0.75em;
 }
 
 table tr {
   background-color: #161515;
   border: 1px solid #6e561a;
-  padding: .35em;
+  padding: 0.35em;
 }
 
 table th,
 table td {
-  padding: .625em;
+  padding: 0.625em;
   text-align: center;
 }
 
 table th {
-  font-size: .85em;
-  letter-spacing: .1em;
+  font-size: 0.85em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 
@@ -668,7 +664,7 @@ table th {
   table caption {
     font-size: 1.3em;
   }
-  
+
   table thead {
     border: none;
     clip: rect(0 0 0 0);
@@ -679,27 +675,27 @@ table th {
     position: absolute;
     width: 1px;
   }
-  
+
   table tr {
     border-bottom: 3px solid #6e561a;
     display: block;
-    margin-bottom: .625em;
+    margin-bottom: 0.625em;
   }
-  
+
   table td {
     border-bottom: 1px solid #6e561a;
     display: block;
-    font-size: .8em;
+    font-size: 0.8em;
     text-align: right;
   }
-  
+
   table td::before {
     content: attr(data-label);
     float: left;
     font-weight: bold;
     text-transform: uppercase;
   }
-  
+
   table td:last-child {
     border-bottom: 0;
   }
@@ -865,3 +861,22 @@ Large devices (laptops/desktops, 992px and up)
 Extra large devices (large laptops and desktops, 1200px and up)
 @media only screen and (min-width: 1200px) {...}
 */
+
+/* SEARCH */
+.search-results {
+  position: absolute;
+  background-color: #161515;
+  z-index: 999;
+  border-radius: 4px;
+  padding: 1em;
+  display: none; /* Initially hide the search results */
+}
+
+#searchForm input {
+  margin: 0.5em;
+  border-radius: 4px;
+  border: solid 1.5px #161515;
+  background-color: #161515;
+  color: white;
+  outline: none;
+}

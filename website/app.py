@@ -10,6 +10,7 @@ from .routes.auth_routes import auth
 from .routes.cart_routes import carts
 from .routes.profile_routes import profile
 from .routes.checkout_routes import checkout
+from .routes.search_routes import search
 
 from .admin.routes.orders_routes import Orders
 from .admin.routes.users_routes import Users
@@ -24,6 +25,7 @@ def register_blueprints(app):
     app.register_blueprint(carts, url_prefix='/')
     app.register_blueprint(profile, url_prefix='/')
     app.register_blueprint(checkout, url_prefix='/')
+    app.register_blueprint(search, url_prefix='/')
     
 def register_admin_blueprints(app):
     admin = Admin(app, name='ecommerceFlask', template_mode='bootstrap4', index_view=Stats())
