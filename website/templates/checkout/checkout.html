@@ -24,6 +24,7 @@ content %}
           type="text"
           placeholder="Shipping address"
           name="shipping_address"
+          required
         />
       </div>
       <div>
@@ -31,15 +32,16 @@ content %}
           type="text"
           placeholder="Billing address"
           name="billing_address"
+          required
         />
       </div>
     </div>
     <div class="checkout-contact">
       <div>
-        <input type="tel" placeholder="Phone number" name="phone_number" />
+        <input type="tel" placeholder="Phone number" name="phone_number" required />
       </div>
       <div>
-        <input type="email" placeholder="Email" name="email" />
+        <input type="email" placeholder="Email" name="email" required />
       </div>
     </div>
     <h2>Select payment method</h2>

@@ -11,11 +11,13 @@
     <tr>
       <td>
         <div class="cart-info">
-          <a href="{{ url_for('watches.watch_detail', id=item[0]) }}">
-            <img
-              src="{{url_for('static', filename='static/images/watches/' ~ item[2] ~ '_' ~ item[3] ~ '.png')}}"
-            />
-          </a>
+          <div class="cart-image">
+            <a href="{{ url_for('watches.watch_detail', id=item[0]) }}">
+              <img
+                src="{{url_for('static', filename='static/images/watches/' ~ item[2] ~ '_' ~ item[3] ~ '.png')}}"
+              />
+            </a>
+          </div>
           <div>
             <p style="text-transform: uppercase">
               {{item.brand}} {{item.model}}

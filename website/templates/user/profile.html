@@ -1,27 +1,54 @@
 {% extends "base.html" %} {% block title %} Profile {% endblock %} {% block
 content %}
 <div class="profile-page">
-  <h1>{{username}}</h1>
-  <form
-    id="deleteProfile"
-    action="{{url_for('profile.delete_profile')}}"
-    method="POST"
-  >
-    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
-    <button type="button" onclick="deleteConfirm(this.form)">
-      Delete Account
-    </button>
-  </form>
-  <div>
-    {% if orders %}
-    <h2>Your Orders</h2>
+  <div class="profile-data">
+    <h1>{{username}}</h1>
+    <form
+      id="deleteProfile"
+      action="{{url_for('profile.delete_profile')}}"
+      method="POST"
+    >
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+      <button type="button" onclick="deleteConfirm(this.form)">
+        Delete Account
+      </button>
+    </form>
+  </div>
+  <div class="profile-orders">
+    {% if orders %}  
+    <table>
+      <caption>Your orders</caption>
+      <thead>
+        <tr>
+          <th scope="col">Watch</th>
+          <th scope="col">Price</th>
+          <th scope="col">Quantity</th>
+          <th scope="col">Date Of Order</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for order in orders %}
+
+        <tr>
+          <td data-label="Watch">
+            <a href="{{ url_for('watches.watch_detail', id=order.watch_id) }}">{{order.brand}} {{order.model}}</a>
+          </td>
+          <td data-label="Price">{{order.price}} €</td>
+          <td data-label="Quantity">{{order.quantity}}</td>
+          <td data-label="Order Date">{{order.order_date}}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <!--<h2>Your Orders</h2>
     <ul>
       {% for order in orders %}
+
       <a href="{{ url_for('watches.watch_detail', id=order.watch_id) }}">
         <li>{{ order.brand }} {{ order.model }} {{ order.price }}</li>
       </a>
       {% endfor %}
-    </ul>
+    </ul>-->
     {% else %}
     <p>You don't have any orders!</p>
     {% endif %}
@@ -35,3 +62,6 @@ content %}
   };
 </script>
 {% endblock %}
+
+
+/*     */
