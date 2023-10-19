@@ -31,37 +31,19 @@
   <hr />
   <div>
     <div>
-      {% if review.rating == 1 %}
-      <span>&#9733;</span>
-      <span>{{review.username}}</span>
+      {% for i in range(review.rating) %} &#9733; {% endfor %}
+      <span>{{ review.username }}</span>
       <span>&#183;</span>
-      <span>{{review.review_date}}</span>
-
-      {% elif review.rating == 2 %}
-      <span>&#9733;&#9733;</span>
-      <span>{{review.username}}</span>
-      <span>&#183;</span>
-      <span>{{review.review_date}}</span>
-
-      {% elif review.rating == 3 %}
-      <span>&#9733;&#9733;&#9733;</span>
-      <span>{{review.username}}</span>
-      <span>&#183;</span>
-      <span>{{review.review_date}}</span>
-
-      {% elif review.rating == 4 %}
-      <span>&#9733;&#9733;&#9733;&#9733;</span>
-      <span>{{review.username}}</span>
-      <span>&#183;</span>
-      <span>{{review.review_date}}</span>
-
-      {% elif review.rating == 5 %}
-      <span style="font-size: 20px">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-      <span>{{review.username}}</span>
-      <span>&#183;</span>
-      <span>{{review.review_date}}</span>
+      <span>{{ review.review_date }}</span>
+      {% if session.user_id == review.user_id %}
+      <form method="POST" action="{{url_for('watches.delete_review')}}">
+        <input type="hidden" name="review_id" value="{{ review.review_id }}" />
+        <input type="hidden" name="user_id" value="{{ review.user_id }}" />
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+        <button type="submit">Delete Review</button>
+      </form>
+      {% endif %}
     </div>
-    {% endif %}
     <div class="review-text">{{ review.review }}</div>
   </div>
   {% endfor %} {% else %}
@@ -83,11 +65,9 @@
         <div>
           <label for="ratings">Give rating</label>
           <select name="ratings" id="ratings">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
+            {% for rating in range(1, 6) %}
+            <option>{{ rating }}</option>
+            {% endfor %}
           </select>
         </div>
         <div><button type="submit">submit</button></div>

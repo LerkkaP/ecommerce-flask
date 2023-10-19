@@ -1,5 +1,8 @@
 from flask import Blueprint, render_template, request, session, flash, redirect, url_for
-from ..views.watches import get_all_watches, get_watch_detail, add_review
+
+from ..views.watches import get_all_watches, get_watch_detail, add_review, delete_watch_review
+
+from ..decorators import login_required
 
 watches = Blueprint('watches', __name__)
 
@@ -25,3 +28,15 @@ def watch_detail(id):
             flash("Review added!")
 
         return redirect(url_for('watches.watch_detail', id=id))
+
+@watches.route('/delete_review', methods=['POST'])
+@login_required
+def delete_review():
+    review_id = request.form['review_id']
+    user_id = request.form['user_id']
+
+    delete_watch_review(review_id, user_id)
+
+    flash('Review deleted successfully!', category='success')
+
+    return redirect(request.referrer)

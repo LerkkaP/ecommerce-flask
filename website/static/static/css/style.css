@@ -624,7 +624,7 @@ td img {
   background-color: #6e561a;
 }
 
-table {
+.profile-table {
   border: 1px solid #6e561a;
   border-collapse: collapse;
   margin: 0 auto;
@@ -644,8 +644,8 @@ table tr {
   padding: 0.35em;
 }
 
-table th,
-table td {
+.profile-table th,
+.profile-table td {
   padding: 0.625em;
   text-align: center;
 }

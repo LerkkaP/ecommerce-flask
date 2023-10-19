@@ -24,7 +24,7 @@ def get_watch_detail(id):
     query = db.session.execute(text("SELECT id, brand, model, price, description FROM watches WHERE id=:watch_id;"), {'watch_id': id})
     details = query.fetchone()
 
-    review_query = db.session.execute(text("SELECT users.username, reviews.review, reviews.rating, reviews.review_date "
+    review_query = db.session.execute(text("SELECT reviews.id as review_id, users.id as user_id, users.username, reviews.review, reviews.rating, reviews.review_date "
                                         "FROM reviews "
                                         "JOIN users ON reviews.user_id = users.id "
                                         "WHERE reviews.watch_id=:watch_id;"), {'watch_id': id})
@@ -39,7 +39,9 @@ def add_review(watch_id, user_id, rating, description):
     db.session.execute(text(query), {"watch_id": watch_id, "user_id": user_id, "review": description, "rating": rating, "review_date": today})
     db.session.commit()
 
-
+def delete_watch_review(review_id, user_id):
+    db.session.execute(text("DELETE FROM reviews WHERE id=:review_id AND user_id=:user_id"), {"review_id": review_id, "user_id": user_id})
+    db.session.commit()
         
 
 

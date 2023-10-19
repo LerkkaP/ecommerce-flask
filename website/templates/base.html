@@ -35,11 +35,7 @@
             {% if session.user_id %}
             <li class="nav-item">
               <form id="searchForm">
-                <input
-                  placeholder="Search by brand..."
-                  type="text"
-                  name="search"
-                />
+                <input placeholder="Search..." type="text" name="search" />
               </form>
 
               <div id="searchResults" class="search-results">
@@ -60,7 +56,13 @@
             </li>
             {% else %}
             <li class="nav-item">
-              <input />
+              <form id="searchForm">
+                <input placeholder="Search..." type="text" name="search" />
+              </form>
+
+              <div id="searchResults" class="search-results">
+                <div class="no-results">No results found</div>
+              </div>
             </li>
             <li class="nav-item">
               <a href="/">Watches</a>

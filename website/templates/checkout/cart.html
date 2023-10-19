@@ -59,8 +59,10 @@
     </tr>
     {% endfor %}
   </table>
-  <p><b>Total: {{summa}}€</b></p>
-  <a id="checkout" href="/checkout">Proceed to checkout</a>
+  <div>
+    <p><b>Total: {{summa}}€</b></p>
+    <a id="checkout" href="/checkout">Proceed to checkout</a>
+  </div>
 </div>
 {% else %}
 
