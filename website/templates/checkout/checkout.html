@@ -38,14 +38,19 @@ content %}
     </div>
     <div class="checkout-contact">
       <div>
-        <input type="tel" placeholder="Phone number" name="phone_number" required />
+        <input
+          type="tel"
+          placeholder="Phone number"
+          name="phone_number"
+          required
+        />
       </div>
       <div>
         <input type="email" placeholder="Email" name="email" required />
       </div>
     </div>
     <h2>Select payment method</h2>
-    <div class="payment-method">
+    <div class="payment-method payment-container">
       <div>
         <input type="radio" id="paypal" name="payment" value="paypal" />
         <label for="paypal">

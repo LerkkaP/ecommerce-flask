@@ -71,6 +71,7 @@ body {
   color: white;
   outline: none;
   width: calc(100% - 18px);
+  font-size: 16px;
 }
 
 .form-auth {
@@ -93,6 +94,12 @@ body {
   border: none;
   cursor: pointer;
   margin-top: 1em;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.form-auth button:hover {
+  background-color: #6e561a;
 }
 
 .form-auth a {
@@ -223,6 +230,11 @@ body {
   font-size: 16px;
 }
 
+.details-container button:hover,
+.reviews-container button:hover {
+  background-color: #6e561a;
+}
+
 .details-info button {
   width: 100%;
 }
@@ -288,6 +300,7 @@ hr {
 #ratings {
   color: rgb(145, 143, 143);
   background-color: #161515;
+  font-size: 16px;
 }
 
 .no-reviews {
@@ -467,6 +480,7 @@ td img {
   border-radius: 4px;
   text-decoration: none;
   cursor: pointer;
+  font-size: 16px;
 }
 
 .empty-cart button:hover {
@@ -506,6 +520,7 @@ td img {
   background-color: #161515;
   color: white;
   outline: none;
+  font-size: 16px;
 }
 
 .checkout-names,
@@ -585,6 +600,7 @@ td img {
   border-radius: 4px;
   text-decoration: none;
   cursor: pointer;
+  font-size: 16px;
 }
 
 .place-order button:hover {
@@ -797,6 +813,42 @@ table th {
   }
 }
 
+@media only screen and (max-width: 1363px) {
+  .watch-image {
+    width: 300px;
+    height: 300px;
+  }
+}
+
+@media only screen and (max-width: 1222px) {
+  .watch-image {
+    width: 250px;
+    height: 250px;
+  }
+  /* Add your styles for laptops and larger screens here */
+}
+
+@media only screen and (min-width: 841px) and (max-width: 1044px) {
+  .footer-brand-logos img {
+    height: 40px;
+    margin: 0;
+    padding-right: 5px;
+  }
+}
+
+@media only screen and (min-width: 600px) and (max-width: 852px) {
+  .footer-brand-logos img {
+    height: 30px;
+    margin: 0;
+    padding-right: 5px;
+  }
+
+  .watch-image {
+    width: 170px;
+    height: 170px;
+  }
+}
+
 /*
 @media screen and (max-width: 768px) {
   .nav-links {
@@ -863,23 +915,6 @@ table th {
   }
 }*/
 
-/*
-Extra small devices (phones, 600px and down)
-@media only screen and (max-width: 600px) {...}
-
-Small devices (portrait tablets and large phones, 600px and up)
-@media only screen and (min-width: 600px) {...}
-
-Medium devices (landscape tablets, 768px and up)
-@media only screen and (min-width: 768px) {...}
-
-Large devices (laptops/desktops, 992px and up)
-@media only screen and (min-width: 992px) {...}
-
-Extra large devices (large laptops and desktops, 1200px and up)
-@media only screen and (min-width: 1200px) {...}
-*/
-
 /* SEARCH */
 .search-results {
   position: absolute;
@@ -887,7 +922,7 @@ Extra large devices (large laptops and desktops, 1200px and up)
   z-index: 999;
   border-radius: 4px;
   padding: 1em;
-  display: none; /* Initially hide the search results */
+  display: none;
 }
 
 #searchForm input {
@@ -897,4 +932,5 @@ Extra large devices (large laptops and desktops, 1200px and up)
   background-color: #161515;
   color: white;
   outline: none;
+  font-size: 16px;
 }

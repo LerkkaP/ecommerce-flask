@@ -31,11 +31,14 @@ def get_watch_detail(id):
     
     rating_query = db.session.execute(text("SELECT ROUND(AVG(rating), 0) FROM reviews WHERE watch_id=:watch_id"), {"watch_id": id})
 
+    count_query = db.session.execute(text("SELECT COUNT(*) FROM reviews WHERE watch_id=:watch_id;"), {'watch_id': id})
+    review_count = count_query.fetchone()[0]
+
     average_rating = rating_query.fetchone()[0]
     
     reviews = review_query.fetchall()
 
-    return details, reviews, average_rating
+    return details, reviews, average_rating, review_count
 
 def add_review(watch_id, user_id, rating, description):
     today = date.today()

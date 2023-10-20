@@ -14,9 +14,8 @@ def all_watches():
 @watches.route('/watch/<int:id>', methods=['GET', 'POST'])
 def watch_detail(id):
     if request.method == "GET":
-        details, reviews, average_rating = get_watch_detail(id)
-        print(average_rating)
-        return render_template("watches/watch_detail.html", details=details, reviews=reviews, average_rating=average_rating)
+        details, reviews, average_rating, review_count = get_watch_detail(id)
+        return render_template("watches/watch_detail.html", details=details, reviews=reviews, average_rating=average_rating, review_count=review_count)
     elif request.method == "POST":
         if not session.get("user_id"):
             return redirect('/login')
