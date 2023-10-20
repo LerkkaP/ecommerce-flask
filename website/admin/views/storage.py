@@ -3,7 +3,7 @@ from sqlalchemy.sql import text
 from ...db import db
 
 def show_storage():
-    query = db.session.execute(text("SELECT * FROM watches;"))
+    query = db.session.execute(text("SELECT id, brand, model, cast(price as money), description FROM watches;"))
 
     watches = query.fetchall()
 

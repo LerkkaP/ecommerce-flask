@@ -11,13 +11,14 @@ def login_user(username, password):
     result = db.session.execute(text(query), {'username': username})
     user = result.fetchone()
     if not user:
-        return "error", "Invalid username"
+        # Generic error message for security reasons
+        return "error", "Invalid username or password"
     else:
         if check_password_hash(user.password, password):
             session["user_id"] = user.id
             return "success", f"Welcome {username}!"
         else:
-            return "error", "Invalid password"
+            return "error", "Invalid username or password"
 
 def logout_user():
     del session['user_id']

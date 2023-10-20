@@ -21,9 +21,9 @@ def add_cart():
 def shopping_cart():
     user_id = session.get("user_id")
 
-    items, summa = show_cart(user_id)
+    items, total_sum = show_cart(user_id)
 
-    return render_template("checkout/cart.html", items=items, summa=summa)
+    return render_template("checkout/cart.html", items=items, total_sum=total_sum)
 
 @carts.route('/deleteitem/<int:watch_id>', methods=['POST'])
 @login_required

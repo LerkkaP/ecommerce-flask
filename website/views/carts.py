@@ -18,18 +18,22 @@ def add_watch_to_cart(watch_id, user_id):
 
 def show_cart(user_id):
     query = db.session.execute(text(
-    "SELECT c.watch_id, c.quantity, w.brand, w.model, w.price " 
-    "FROM cart c JOIN watches w ON c.watch_id = w.id " 
-    "WHERE c.user_id=:user_id;"),
-    {"user_id": user_id})
+        "SELECT c.watch_id, c.quantity, w.brand, w.model, cast(w.price as money), cast(SUM(w.price * c.quantity) as money) as total_price " 
+        "FROM cart c JOIN watches w ON c.watch_id = w.id " 
+        "WHERE c.user_id=:user_id "
+        "GROUP BY c.watch_id, c.quantity, w.brand, w.model, w.price;"),
+        {"user_id": user_id})
+    
+    total_sum_query = db.session.execute(text(
+        "SELECT cast(SUM(w.price * c.quantity) as money) as total_sum " 
+        "FROM cart c JOIN watches w ON c.watch_id = w.id " 
+        "WHERE c.user_id=:user_id;"),
+        {"user_id": user_id})
+    
     items = query.fetchall()
+    total_sum = total_sum_query.fetchone()[0]
 
-    summa = 0
-    if len(items) > 0:
-        for item in items:
-            summa += item.price * item.quantity
-
-    return items, summa
+    return items, total_sum
 
 def delete_from_cart(watch_id):
     db.session.execute(text("DELETE FROM cart WHERE watch_id=:watch_id"), {"watch_id": watch_id})

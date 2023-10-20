@@ -14,14 +14,14 @@ def get_all_watches():
 
     total_pages = (total_items + items_per_page - 1) // items_per_page
 
-    result = db.session.execute(text("SELECT id, brand, model, price FROM watches ORDER BY brand LIMIT :limit OFFSET :offset;"), {'limit': items_per_page, 'offset': offset})
+    result = db.session.execute(text("SELECT id, brand, model, cast(price as money) FROM watches ORDER BY brand LIMIT :limit OFFSET :offset;"), {'limit': items_per_page, 'offset': offset})
 
     watches = result.fetchall()
     
     return watches, page, items_per_page, total_pages
 
 def get_watch_detail(id):
-    query = db.session.execute(text("SELECT id, brand, model, price, description FROM watches WHERE id=:watch_id;"), {'watch_id': id})
+    query = db.session.execute(text("SELECT id, brand, model, cast(price as money), description FROM watches WHERE id=:watch_id;"), {'watch_id': id})
     details = query.fetchone()
 
     review_query = db.session.execute(text("SELECT reviews.id as review_id, users.id as user_id, users.username, reviews.review, reviews.rating, reviews.review_date "

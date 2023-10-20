@@ -22,7 +22,7 @@
             <p style="text-transform: uppercase">
               {{item.brand}} {{item.model}}
             </p>
-            <small>{{ item.price }} €</small>
+            <small>{{ item.price }}</small>
             <br />
             <form
               action="{{ url_for('carts.delete_item', watch_id=item.watch_id)}}"
@@ -55,12 +55,12 @@
           </form>
         </div>
       </td>
-      <td>{{item.price * item.quantity}} €</td>
+      <td>{{item.total_price}}</td>
     </tr>
     {% endfor %}
   </table>
   <div>
-    <p><b>Total: {{summa}}€</b></p>
+    <p><b>{{total_sum}}</b></p>
     <a id="checkout" href="/checkout">Proceed to checkout</a>
   </div>
 </div>
