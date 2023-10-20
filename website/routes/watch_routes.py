@@ -14,18 +14,26 @@ def all_watches():
 @watches.route('/watch/<int:id>', methods=['GET', 'POST'])
 def watch_detail(id):
     if request.method == "GET":
-        details, reviews = get_watch_detail(id)
-        return render_template("watches/watch_detail.html", details=details, reviews=reviews)
+        details, reviews, average_rating = get_watch_detail(id)
+        print(average_rating)
+        return render_template("watches/watch_detail.html", details=details, reviews=reviews, average_rating=average_rating)
     elif request.method == "POST":
+        if not session.get("user_id"):
+            return redirect('/login')
+
         rating = request.form.get("ratings")
         description = request.form.get("description")
         user_id = session.get("user_id")
 
         if len(description) > 1000:
             flash("Review length exceeds 1000 characters!", category="error")
+        elif len(description) == 0:
+            flash("Review cannot be empty!", category="error")
         else:
-            add_review(id, user_id, rating, description)
-            flash("Review added!")
+            if add_review(id, user_id, rating, description):
+                flash("Review added!")
+            else:
+                flash("You have already reviewed this watch!", category="error")
 
         return redirect(url_for('watches.watch_detail', id=id))
 

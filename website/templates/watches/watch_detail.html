@@ -27,6 +27,10 @@
 <div class="reviews-container">
   {% if reviews %}
   <h2>Reviews</h2>
+  <div>
+    {% for i in range(average_rating | int) %} &#9733; {% endfor %}
+    <span>{{average_rating}}</span>
+  </div>
   {% for review in reviews %}
   <hr />
   <div>
@@ -40,7 +44,7 @@
         <input type="hidden" name="review_id" value="{{ review.review_id }}" />
         <input type="hidden" name="user_id" value="{{ review.user_id }}" />
         <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
-        <button type="submit">Delete Review</button>
+        <button id="delete-review" type="submit">Delete Review</button>
       </form>
       {% endif %}
     </div>

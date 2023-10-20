@@ -28,16 +28,33 @@ def get_watch_detail(id):
                                         "FROM reviews "
                                         "JOIN users ON reviews.user_id = users.id "
                                         "WHERE reviews.watch_id=:watch_id;"), {'watch_id': id})
+    
+    rating_query = db.session.execute(text("SELECT ROUND(AVG(rating), 0) FROM reviews WHERE watch_id=:watch_id"), {"watch_id": id})
+
+    average_rating = rating_query.fetchone()[0]
+    
     reviews = review_query.fetchall()
 
-    return details, reviews
+    return details, reviews, average_rating
 
 def add_review(watch_id, user_id, rating, description):
     today = date.today()
 
-    query = ("INSERT INTO reviews (watch_id, user_id, review, rating, review_date) values (:watch_id, :user_id, :review, :rating, :review_date);")
-    db.session.execute(text(query), {"watch_id": watch_id, "user_id": user_id, "review": description, "rating": rating, "review_date": today})
+    query = """
+    INSERT INTO reviews (watch_id, user_id, review, rating, review_date)
+    SELECT :watch_id, :user_id, :review, :rating, :review_date
+    WHERE NOT EXISTS (
+        SELECT 1 FROM reviews 
+        WHERE user_id = :user_id 
+        AND watch_id = :watch_id
+    )
+    """
+    
+    result = db.session.execute(text(query), {"watch_id": watch_id, "user_id": user_id, "review": description, "rating": rating, "review_date": today})
     db.session.commit()
+
+    return result.rowcount > 0
+
 
 def delete_watch_review(review_id, user_id):
     db.session.execute(text("DELETE FROM reviews WHERE id=:review_id AND user_id=:user_id"), {"review_id": review_id, "user_id": user_id})

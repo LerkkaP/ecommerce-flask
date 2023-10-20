@@ -219,6 +219,22 @@ body {
   border-style: none;
 }
 
+#delete-review {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+  color: #c29013;
+}
+
+#delete-review:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.5em;
+}
+
 .reviews-container button {
   margin-top: 1em;
   background-color: #9a7d31;
