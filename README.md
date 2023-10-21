@@ -12,13 +12,13 @@ This project is an exercise for the course Databases and Web Programming at the 
 
 - **Custom CSS Styling**: The project features custom CSS styling for a unique and visually appealing user interface.
 
-- **Admin Panel**: An admin panel is provided, allowing authorized users to manage various aspects of the website, such as adding new watches and handling reviews.
+- **Admin Panel**: An admin panel is provided, allowing users with admin privileges to manage various aspects of the website, such as adding new watches and handling reviews.
 
 - **User Reviews**: Authenticated users can provide reviews and ratings for watches, contributing to the overall user experience.
 
 - **JavaScript for Dynamicality**: JavaScript is utilized to add dynamicality to the website, enhancing user interaction and providing a more seamless experience.
 
-- **Responsive Design (Laptops and Larger Screens)**: While the project is designed to be responsive for laptops and larger screens, it is not fully optimized for mobile devices.
+- **Responsive Design (Laptops and Larger Screens)**: While the project is designed to be responsive for laptops and larger screens (at least for the most part of), it is not for mobile devices.
 
 ## Technologies used
 
@@ -80,3 +80,35 @@ This project is an exercise for the course Databases and Web Programming at the 
    ```bash
    python3 main.py
    ```
+
+## Seed Data
+
+The seed data includes the following:
+
+- 12 watches have been added to the store in the database.
+
+- Two user accounts have been created for testing purposes:
+
+  1. Admin user:
+
+     - Username: `admin`
+     - Password: `Adminpassword23!`
+
+     This account has administrative privileges.
+
+  2. Customer user:
+
+     - Username: `Alice`
+     - Password: `Customerpassword1!`
+
+     This account has customer privileges.
+
+- To access the admin panel, log in with the admin account and visit the URL `/admin`.
+
+- You can use these accounts to test the application. If you wish to create additional accounts, you can do so through `psql`. Please make sure to specify the privileges (either `admin` or `customer`) and save the password in hashed form using `sha256`.
+
+- Additionally, you can add new watches through `psql` or the admin panel (if logged in with an admin account). While adding an image is optional, it is recommended to maintain the integrity of the user interface. If you choose to include an image, please remember to manually add it to the `images/watches` folder in the static directory.
+
+  For specific naming conventions for watch images, please refer to the `images/watches` folder in the project directory.
+
+**Note:** This information is intended for testing purposes. If you plan to deploy this application in a production environment, ensure that you follow best practices for security and user management.

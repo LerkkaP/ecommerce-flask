@@ -80,11 +80,13 @@ def delete_review():
     Returns:
         str: Redirect URL.
     """
+    logged_in_user = session.get("user_id")
     review_id = request.form["review_id"]
     user_id = request.form["user_id"]
-
-    delete_watch_review(review_id, user_id)
-
-    flash("Review deleted successfully!", category="success")
+    if logged_in_user == int(user_id):
+        delete_watch_review(review_id, user_id)
+        flash("Review deleted successfully!", category="success")
+    else:
+        flash("You are not authorized to delete this review.", category="error")
 
     return redirect(request.referrer)

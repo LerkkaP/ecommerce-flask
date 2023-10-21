@@ -2,10 +2,10 @@
 Module for handling cart-related routes and logic.
 """
 
-from flask import Blueprint, render_template, request, redirect, session, url_for
+from flask import Blueprint, render_template, request, redirect, session, url_for, flash
 
 from website.decorators import login_required
-from  website.views.carts import add_watch_to_cart, show_cart, delete_from_cart, decrease_item_quantity, increase_item_quantity
+from website.views.carts import add_watch_to_cart, show_cart, delete_from_cart, decrease_item_quantity, increase_item_quantity
 
 carts = Blueprint("carts", __name__)
 
@@ -21,6 +21,10 @@ def add_cart():
     """
     watch_id = request.form.get("watch_id")
     user_id = session.get("user_id")
+
+    if not watch_id:
+        flash("Invalid watch ID.", category="error")
+        return redirect(url_for("watches.watch_detail", watch_id=watch_id))
 
     if request.method == "POST":
         add_watch_to_cart(watch_id, user_id)

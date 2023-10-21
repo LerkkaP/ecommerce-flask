@@ -31,7 +31,6 @@
     <span>Average rating of {{average_rating}}</span>
     {% for i in range(average_rating | int) %} &#9733; {% endfor %}
     <span>| by {{review_count}} reviews</span>
-    <!--<span>{{average_rating}} | Average rating by {{review_count}} reviews</span>-->
   </div>
   {% for review in reviews %}
   <hr />

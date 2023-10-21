@@ -1,3 +1,13 @@
+INSERT INTO users (username, password, privileges)
+VALUES
+  ('admin', 'pbkdf2:sha256:600000$etZel8ZSXSI8ftIh$d0af7df1d0f3604080d474ba3f8e348e5d42581fc15814c945e3a54fcb11a008',
+  'admin'
+  ),
+  ('alice',
+  'pbkdf2:sha256:600000$TzC8EWbvLehMvohe$2b402af1f33dd18f6a4255810ec42154681951f9149b9d6f7c8bff2c8273db2c',
+  'customer'
+  )
+
 INSERT INTO watches (brand, model, price, description)
 VALUES 
   ('Rolex', 'Datejust', 6000, 'Introducing the iconic Rolex Datejust, a timeless masterpiece that seamlessly blends classic design with cutting-edge technology. This legendary timepiece is renowned for its elegant aesthetics, precision engineering, and unmatched reliability. The Datejust boasts a distinctive cyclops lens over the date display, ensuring optimal legibility. Crafted with the finest materials, it exudes luxury and sophistication, making it the perfect companion for any occasion. Elevate your style with the Rolex Datejust, a symbol of refinement and prestige.'),
@@ -8,7 +18,7 @@ VALUES
   ('Rolex', 'GMT-Master', 20500, ' Elevate your style with the Rolex GMT-Master, an icon of prestige and luxury. Designed for globetrotters and adventurers, this timepiece features a dual time zone function, allowing you to keep track of multiple time zones with ease. The GMT-Master is a companion for those who navigate the world with sophistication.'),
   ('Rolex', 'Milgauss', 15000, 'The Rolex Milgauss is an icon of prestige and luxury, designed for those who appreciate innovation and style. Known for its resistance to magnetic fields, this watch is a testament to Rolex''s commitment to cutting-edge technology. The Milgauss is a statement of both form and function.'),
   ('Omega', 'Moonwatch', 5000, 'Experience the allure of space with the Omega Moonwatch, a legendary timepiece that has ventured beyond our atmosphere. Worn by astronauts during the Apollo missions, this watch is a symbol of human achievement and exploration. The Moonwatch is a tribute to the spirit of discovery.'),
-  ('Patek Philippe', 'Nautilus', 60000, 'Embrace the epitome of elegance with the Patek Philippe Nautilus, an exquisite luxury watch. With its distinctive porthole design, the Nautilus is a symbol of sophistication and refinement. Crafted with the utmost attention to detail, this watch is a '),
+  ('Patek Philippe', 'Nautilus', 60000, 'Embrace the epitome of elegance with the Patek Philippe Nautilus, an exquisite luxury watch. With its distinctive porthole design, the Nautilus is a symbol of sophistication and refinement. Crafted with the utmost attention to detail, this watch is a testament to the artistry and precision that define the Patek Philippe brand'),
   ('Hublot', 'Big Bang', 69000, 'The Hublot Big Bang is a testament to exceptional craftsmanship and avant-garde design. Blending innovation with bold aesthetics, this watch is a statement of individuality and style. The Big Bang is a celebration of creativity and artistry.'),
-  ('Tag Heuer', 'Monaco', 7500, 'The Tag Heuer Monaco is a tribute to exceptional craftsmanship and timeless design. Known for its square case and distinctive blue dial, this watch is an icon of racing heritage. The Monaco is a symbol of daring and innovation. Featured in Breaking Bad.'),
+  ('Tag Heuer', 'Monaco', 7500, 'The Tag Heuer Monaco is a tribute to exceptional craftsmanship and timeless design. Known for its square case and distinctive blue dial, this watch is an icon of racing heritage. The Monaco is a symbol of daring and innovation. It gained further fame as the watch worn by Walter White, the iconic character in the TV series "Breaking Bad," adding an extra layer of cultural significance to its already illustrious legacy.'),
   ('Tudor', 'Black Bay', 4500, 'The Tudor Black Bay is a testament to exceptional craftsmanship and rugged elegance. Inspired by the rich maritime history of Tudor, this watch combines vintage charm with modern reliability. The Black Bay is a companion for those who seek adventure and style.');
