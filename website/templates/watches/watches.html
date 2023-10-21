@@ -4,7 +4,7 @@
   {% for watch in watches %}
   <div class="watch-card">
     <div class="watch-image">
-      <a href="{{ url_for('watches.watch_detail', id=watch.id) }}">
+      <a href="{{ url_for('watches.watch_detail', watch_id=watch.id) }}">
         <img
           src="{{url_for('static', filename='static/images/watches/' ~ watch.
           brand ~ '_' ~ watch.model ~ '.png')}}"

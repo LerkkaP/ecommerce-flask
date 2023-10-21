@@ -1,3 +1,7 @@
+"""
+Module for creating and configuring the Flask application.
+"""
+
 from flask_wtf.csrf import CSRFProtect
 from flask import Flask
 from flask_admin import Admin
@@ -20,20 +24,29 @@ from .admin.routes.stats_routes import Stats
 csrf = CSRFProtect()
 
 def register_blueprints(app):
+    """
+    Register blueprints for different routes.
+    """
     app.register_blueprint(watches, url_prefix='/')
     app.register_blueprint(auth, url_prefix='/')
     app.register_blueprint(carts, url_prefix='/')
     app.register_blueprint(profile, url_prefix='/')
     app.register_blueprint(checkout, url_prefix='/')
     app.register_blueprint(search, url_prefix='/')
-    
+
 def register_admin_blueprints(app):
-    admin = Admin(app, name='ecommerceFlask', template_mode='bootstrap4', index_view=Stats())
-    admin.add_view(Orders(name='Orders', endpoint='orders'))
-    admin.add_view(Users(name='Users', endpoint='users'))
-    admin.add_view(Storage(name='Storage', endpoint='storage'))
+    """
+    Register blueprints for admin routes.
+    """
+    admin = Admin(app, name="ecommerceFlask", template_mode="bootstrap4", index_view=Stats())
+    admin.add_view(Orders(name="Orders", endpoint="orders"))
+    admin.add_view(Users(name="Users", endpoint="users"))
+    admin.add_view(Storage(name="Storage", endpoint="storage"))
 
 def create_app():
+    """
+    Create and configure the Flask application.
+    """
     app = Flask(__name__)
     app.config.from_object(Config)
 

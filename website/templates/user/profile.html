@@ -33,7 +33,8 @@ content %}
 
         <tr>
           <td data-label="Watch">
-            <a href="{{ url_for('watches.watch_detail', id=order.watch_id) }}"
+            <a
+              href="{{ url_for('watches.watch_detail', watch_id=order.watch_id) }}"
               >{{order.brand}} {{order.model}}</a
             >
           </td>

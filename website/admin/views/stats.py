@@ -1,7 +1,18 @@
+"""
+Module for handling statistics related to watches, orders, reviews, and users.
+"""
+
 from sqlalchemy.sql import text
-from ...db import db
+from website.db import db
+
 
 def show_stats():
+    """
+    Retrieve statistics for watches, orders, reviews, and users.
+
+    Returns:
+        tuple: A tuple containing the counts of watches, orders, reviews, and users.
+    """
 
     watch_query = db.session.execute(text("SELECT COUNT(*) FROM watches;"))
     watches = watch_query.fetchone()[0]
