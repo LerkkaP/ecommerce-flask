@@ -9,7 +9,7 @@ content %}
       method="POST"
     >
       <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
-      <button type="button" onclick="deleteConfirm(this.form)">
+      <button type="button" onclick="DeleteConfirm(this.form)">
         Delete Account
       </button>
     </form>
@@ -49,11 +49,5 @@ content %}
     {% endif %}
   </div>
 </div>
-<script>
-  const deleteConfirm = () => {
-    if (confirm("Are you sure you want to delete your account?") === true) {
-      document.getElementById("deleteProfile").submit();
-    }
-  };
-</script>
+<script src="{{ url_for('static', filename='static/js/profile.js') }}"></script>
 {% endblock %} /* */

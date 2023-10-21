@@ -331,6 +331,10 @@ hr {
   display: inline-block;
 }
 
+.pagination a:hover {
+  background-color: #161515;
+}
+
 .pagination a {
   border-radius: 50%;
   width: 34px;
@@ -558,7 +562,7 @@ td img {
 
 .payment-method input[type="radio"] {
   opacity: 0.011;
-  z-index: 100;
+  cursor: pointer;
 }
 
 .payment-method input[type="radio"]:checked + label {
@@ -568,7 +572,6 @@ td img {
 
 .payment-method label {
   padding: 5px;
-
   cursor: pointer;
   z-index: 90;
   background-color: #f5f5f5;
@@ -576,7 +579,7 @@ td img {
 }
 
 .payment-method label:hover {
-  background: #ddd;
+  background: #acaaaa;
 }
 
 .payment-method img {
@@ -615,13 +618,11 @@ td img {
 }
 
 .profile-data {
-  background-color: #161515;
   text-align: center;
   width: 20%;
   height: 100vh;
   color: white;
   border-right: 1px solid #9a7d31;
-  border-radius: 4px;
 }
 
 .profile-orders {
@@ -652,6 +653,11 @@ td img {
   border-radius: 4px;
   text-decoration: none;
   cursor: pointer;
+  font-size: 16px;
+}
+
+.profile-page h1 {
+  color: #9a7d31;
 }
 
 .profile-page button:hover {
@@ -916,6 +922,7 @@ table th {
 }*/
 
 /* SEARCH */
+
 .search-results {
   position: absolute;
   background-color: #161515;
@@ -923,10 +930,10 @@ table th {
   border-radius: 4px;
   padding: 1em;
   display: none;
+  margin-top: 0.1em;
 }
 
-#searchForm input {
-  margin: 0.5em;
+#searchInput {
   border-radius: 4px;
   border: solid 1.5px #161515;
   background-color: #161515;

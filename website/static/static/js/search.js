@@ -1,18 +1,8 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const flashes = document.querySelectorAll(
-    ".flashes .error, .flashes .success"
-  );
-
-  flashes.forEach(function (flash) {
-    setTimeout(function () {
-      flash.style.display = "none";
-    }, 5000);
-  });
-
-  const searchForm = document.getElementById("searchForm");
+  const searchInput = document.querySelector("#searchInput");
   const searchResults = document.getElementById("searchResults");
 
-  searchForm.addEventListener("input", function () {
+  searchInput.addEventListener("input", function () {
     const query = this.elements["search"].value;
     performSearch(query);
   });
@@ -58,14 +48,25 @@ document.addEventListener("DOMContentLoaded", function () {
   function displayResults(watches) {
     searchResults.innerHTML = "";
     for (const watch of watches) {
-      console.log(watch);
       const watchItem = document.createElement("div");
       watchItem.innerHTML = `
-          <a href="/watch/${watch.id}">
-            ${watch.brand} ${watch.model} ${watch.price} €
-          </a>
-        `;
+              <a href="/watch/${watch.id}">
+                ${watch.brand} ${watch.model} ${watch.price} €
+              </a>
+            `;
       searchResults.appendChild(watchItem);
     }
+  }
+
+  searchInput.addEventListener("input", function () {
+    const query = this.value;
+    performSearch(query);
+    positionResultsContainer();
+  });
+
+  function positionResultsContainer() {
+    const inputRect = searchInput.getBoundingClientRect();
+    searchResults.style.top = inputRect.bottom + "px";
+    searchResults.style.left = inputRect.left + "px";
   }
 });
