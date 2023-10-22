@@ -100,7 +100,7 @@ The seed data includes the following:
 
   2. Customer user:
 
-     - Username: `Alice`
+     - Username: `alice`
      - Password: `Customerpassword1!`
 
      This account has customer privileges.

@@ -64,8 +64,8 @@ def delete_item(watch_id):
     Returns:
         str: Redirect URL.
     """
-
-    delete_from_cart(watch_id)
+    user_id = session.get("user_id")
+    delete_from_cart(watch_id, user_id)
 
     return redirect(url_for("carts.shopping_cart"))
 
@@ -81,8 +81,9 @@ def decrease_quantity():
     """
     watch_id = request.form.get("watch_id")
     quantity = request.form.get("quantity")
+    user_id = session.get("user_id")
 
-    decrease_item_quantity(watch_id, quantity)
+    decrease_item_quantity(watch_id, quantity, user_id)
 
     return redirect(url_for("carts.shopping_cart"))
 
@@ -97,7 +98,8 @@ def increase_quantity():
         str: Redirect URL.
     """
     watch_id = request.form.get("watch_id")
+    user_id = session.get("user_id")
 
-    increase_item_quantity(watch_id)
+    increase_item_quantity(watch_id, user_id)
 
     return redirect(url_for("carts.shopping_cart"))

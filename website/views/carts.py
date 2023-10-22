@@ -19,8 +19,8 @@ def add_watch_to_cart(watch_id, user_id):
         None
     """
     count = db.session.execute(
-        text("SELECT COUNT(*) FROM cart WHERE watch_id=:watch_id"),
-        {"watch_id": watch_id}
+        text("SELECT COUNT(*) FROM cart WHERE watch_id=:watch_id AND user_id=:user_id"),
+        {"watch_id": watch_id, "user_id": user_id}
     )
     count_result = count.fetchone()[0]
     if count_result == 0:
@@ -32,8 +32,11 @@ def add_watch_to_cart(watch_id, user_id):
 
     else:
         db.session.execute(
-            text("UPDATE cart SET quantity = quantity + 1 WHERE watch_id=:watch_id"),
-            {"watch_id": watch_id}
+            text(
+                "UPDATE cart SET quantity = quantity + 1 "
+                "WHERE watch_id=:watch_id AND user_id=:user_id"
+            ),
+            {"watch_id": watch_id, "user_id": user_id}
         )
         db.session.commit()
         flash("Item updated")
@@ -70,35 +73,36 @@ def show_cart(user_id):
     return items, total_sum
 
 
-def delete_from_cart(watch_id):
+def delete_from_cart(watch_id, user_id):
     """
     Delete a watch from the user's cart.
 
     Keyword arguments:
         watch_id (int): The ID of the watch to be removed from the cart.
-
+        user_id (int): The ID of the user.
     Returns:
         None
     """
-    db.session.execute(text("DELETE FROM cart WHERE watch_id=:watch_id"), {
-                       "watch_id": watch_id})
+    db.session.execute(text("DELETE FROM cart WHERE watch_id=:watch_id AND user_id=:user_id"), {
+                       "watch_id": watch_id, "user_id": user_id})
     db.session.commit()
 
 
-def decrease_item_quantity(watch_id, quantity):
+def decrease_item_quantity(watch_id, quantity, user_id):
     """
     Decrease the quantity of a watch in the user's cart.
 
     Keyword arguments:
         watch_id (int): The ID of the watch.
         quantity (int): The current quantity of the watch.
+        user_id (int): The ID of the user.
 
     Returns:
         None
     """
     if int(quantity) == 1:
-        db.session.execute(text("DELETE FROM cart WHERE watch_id=:watch_id"), {
-                           "watch_id": watch_id})
+        db.session.execute(text("DELETE FROM cart WHERE watch_id=:watch_id AND user_id=:user_id"), {
+                           "watch_id": watch_id, "user_id": user_id})
         db.session.commit()
     else:
         db.session.execute(text(
@@ -107,16 +111,22 @@ def decrease_item_quantity(watch_id, quantity):
         db.session.commit()
 
 
-def increase_item_quantity(watch_id):
+def increase_item_quantity(watch_id, user_id):
     """
     Increase the quantity of a watch in the user's cart.
 
     Keyword arguments:
         watch_id (int): The ID of the watch.
+        user_id (int): The ID of the user.
 
     Returns:
         None
     """
-    db.session.execute(text(
-        "UPDATE cart SET quantity = quantity + 1 WHERE watch_id=:watch_id"), {"watch_id": watch_id})
+    db.session.execute(
+        text(
+            "UPDATE cart SET quantity = quantity + 1 "
+            "WHERE watch_id=:watch_id AND user_id=:user_id"
+        ),
+        {"watch_id": watch_id, "user_id": user_id}
+    )
     db.session.commit()

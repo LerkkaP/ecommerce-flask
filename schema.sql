@@ -8,7 +8,7 @@ CREATE TABLE watches (
 
 CREATE TABLE users (
     id SERIAL PRIMARY KEY,
-    username TEXT,
+    username TEXT UNIQUE,
     password TEXT,
     privileges TEXT
 );

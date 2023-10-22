@@ -5,9 +5,9 @@ Module for handling authentication-related logic.
 import re
 from flask import session, flash
 from sqlalchemy.sql import text
+from sqlalchemy.exc import IntegrityError
 from werkzeug.security import check_password_hash, generate_password_hash
 from website.db import db
-
 
 def login_user(username, password):
     """
@@ -51,13 +51,8 @@ def register_user(username, password1, password2):
     Returns:
         None
     """
-    check_username = db.session.execute(
-        text("SELECT EXISTS (SELECT username FROM users WHERE username=:username)"),
-        {"username": username}
-    )
-    if check_username.fetchone()[0]:
-        flash("Username is already taken", category="error")
-    else:
+
+    try:
         hash_value = generate_password_hash(password1)
 
         reg = "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$"
@@ -85,3 +80,5 @@ def register_user(username, password1, password2):
             )
             db.session.commit()
             flash("Account created!", category="success")
+    except IntegrityError:
+        flash("Username is already taken", category="error")
