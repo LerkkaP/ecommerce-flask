@@ -6,7 +6,7 @@ VALUES
   ('alice',
   'pbkdf2:sha256:600000$TzC8EWbvLehMvohe$2b402af1f33dd18f6a4255810ec42154681951f9149b9d6f7c8bff2c8273db2c',
   'customer'
-  )
+  );
 
 INSERT INTO watches (brand, model, price, description)
 VALUES 

@@ -148,8 +148,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 400px;
-  height: 400px;
+  width: 350px;
+  height: 350px;
   margin: auto;
   position: relative;
 }
@@ -591,6 +591,7 @@ td img {
 
 .place-order {
   margin-top: 1em;
+  margin-bottom: 3rem;
 }
 
 .place-order button {
