@@ -9,7 +9,6 @@ from website.decorators import admin_login_required
 from website.admin.views.storage import show_storage, add_to_storage, delete_from_storage
 
 
-
 class Storage(BaseView):
     @expose("/")
     @admin_login_required
@@ -43,6 +42,8 @@ class Storage(BaseView):
 
             return redirect(url_for(".index"))
 
+        return None
+
     @expose("/delete_watch/<int:watch_id>", methods=["POST"])
     @admin_login_required
     def delete_watch(self, watch_id):
@@ -56,3 +57,5 @@ class Storage(BaseView):
             delete_from_storage(watch_id)
 
             return redirect(url_for(".index"))
+
+        return None

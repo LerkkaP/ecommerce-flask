@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const searchResults = document.getElementById("searchResults");
 
   searchInput.addEventListener("input", function () {
-    const query = this.elements["search"].value;
+    const query = this.value;
     performSearch(query);
   });
 

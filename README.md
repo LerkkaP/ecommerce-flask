@@ -4,21 +4,23 @@ This project is an exercise for the course Databases and Web Programming at the 
 
 ## Features
 
-- **User Accounts**: Users can create accounts to log in and access additional functionalities.
+- **User accounts**: Users can create accounts to log in and access additional functionalities.
 
-- **Shopping Cart**: Logged-in users can add watches to their shopping cart for convenient checkout.
+- **Shopping cart**: Logged-in users can add watches to their shopping cart for convenient checkout.
 
-- **Mocked Payment System**: While not using real payment processing, the system is designed to simulate the purchase process. Real payment integration, e.g., with Stripe, could be implemented in the future.
+- **Mocked payment system**: While not using real payment processing, the system is designed to simulate the purchase process. Real payment integration, e.g., with Stripe, could be implemented in the future.
 
-- **Custom CSS Styling**: The project features custom CSS styling for a unique and visually appealing user interface.
+- **Custom CSS styling**: The project features custom CSS styling for a unique and visually appealing user interface.
 
-- **Admin Panel**: An admin panel is provided, allowing users with admin privileges to manage various aspects of the website, such as adding new watches and handling reviews.
+- **Admin panel**: An admin panel is provided, allowing users with admin privileges to manage various aspects of the website, such as adding new watches and handling reviews.
 
-- **User Reviews**: Authenticated users can provide reviews and ratings for watches, contributing to the overall user experience.
+- **User reviews**: Authenticated users can provide reviews and ratings for watches, contributing to the overall user experience.
 
-- **JavaScript for Dynamicality**: JavaScript is utilized to add dynamicality to the website, enhancing user interaction and providing a more seamless experience.
+- **JavaScript for dynamicality**: JavaScript is utilized to add dynamicality to the website, enhancing user interaction and providing a more seamless experience.
 
-- **Responsive Design (Laptops and Larger Screens)**: While the project is designed to be responsive for laptops and larger screens (at least for the most part of), it is not for mobile devices.
+- **Responsive Design (Laptops and Larger Screens)**: This app is designed to be somewhat responsive for laptops and larger screens.
+  While efforts have been made to ensure a reasonable viewing experience on these devices,
+  it is not fully optimized for mobile devices.
 
 ## Technologies used
 
@@ -110,5 +112,3 @@ The seed data includes the following:
 - Additionally, you can add new watches through `psql` or the admin panel (if logged in with an admin account). While adding an image is optional, it is recommended to maintain the integrity of the user interface. If you choose to include an image, please remember to manually add it to the `images/watches` folder in the static directory.
 
   For specific naming conventions for watch images, please refer to the `images/watches` folder in the project directory.
-
-**Note:** This information is intended for testing purposes. If you plan to deploy this application in a production environment, ensure that you follow best practices for security and user management.

@@ -27,7 +27,7 @@ def clear_cart(user_id):
     """
     Remove items from the cart after checkout.
 
-    Args:
+    Keyword arguments:
         user_id (int): User's ID.
 
     Returns:

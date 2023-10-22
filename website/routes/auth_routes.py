@@ -5,7 +5,7 @@ Module for handling authentication-related routes.
 from flask import Blueprint, render_template, request, flash, redirect
 
 from website.decorators import login_required
-from  website.views.auth import login_user, logout_user, register_user
+from website.views.auth import login_user, logout_user, register_user
 
 
 auth = Blueprint("auth", __name__)
@@ -33,6 +33,8 @@ def login():
 
         flash(message, category="success")
         return redirect("/")
+
+    return None
 
 
 @auth.route("/logout")

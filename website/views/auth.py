@@ -3,7 +3,7 @@ Module for handling authentication-related logic.
 """
 
 import re
-from flask import request, session, flash
+from flask import session, flash
 from sqlalchemy.sql import text
 from werkzeug.security import check_password_hash, generate_password_hash
 from website.db import db
@@ -20,8 +20,6 @@ def login_user(username, password):
     Returns:
         tuple: A tuple containing the result and a message.
     """
-    username = request.form.get("username")
-    password = request.form.get("password")
     query = "SELECT id, password FROM users WHERE username=:username;"
     result = db.session.execute(text(query), {"username": username})
     user = result.fetchone()

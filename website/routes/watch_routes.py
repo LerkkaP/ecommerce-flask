@@ -70,6 +70,7 @@ def watch_detail(watch_id):
 
         return redirect(url_for("watches.watch_detail", watch_id=watch_id))
 
+    return None
 
 @watches.route("/delete_review", methods=["POST"])
 @login_required
