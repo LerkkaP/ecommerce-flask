@@ -2,6 +2,10 @@
 
 This project is an exercise for the course Databases and Web Programming at the University of Helsinki. It simulates a luxury watch e-commerce platform.
 
+## Access the Deployed App
+
+The deployed version of this app can be accessed [here](https://ecommerce-flask.fly.dev/).
+
 ## Features
 
 - **User accounts**: Users can create accounts to log in and access additional functionalities.
